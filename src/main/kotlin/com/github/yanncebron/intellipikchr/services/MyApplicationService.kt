@@ -1,6 +1,6 @@
-package org.jetbrains.plugins.template.services
+package com.github.yanncebron.intellipikchr.services
 
-import org.jetbrains.plugins.template.MyBundle
+import com.github.yanncebron.intellipikchr.MyBundle
 
 class MyApplicationService {
 
