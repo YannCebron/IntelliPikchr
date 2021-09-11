@@ -1,4 +1,4 @@
-package com.yanncebron.intellijpikchr.editor
+package com.yanncebron.intellipikchr.editor
 
 import com.intellij.ide.scratch.ScratchUtil
 import com.intellij.lang.LanguageUtil
@@ -7,8 +7,8 @@ import com.intellij.openapi.fileEditor.FileEditorPolicy
 import com.intellij.openapi.fileEditor.WeighedFileEditorProvider
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.VirtualFile
-import com.yanncebron.intellijpikchr.PikchrFileType
-import com.yanncebron.intellijpikchr.lang.PikchrLanguage
+import com.yanncebron.intellipikchr.PikchrFileType
+import com.yanncebron.intellipikchr.lang.PikchrLanguage
 
 class PikchrPreviewFileEditorProvider : WeighedFileEditorProvider() {
 

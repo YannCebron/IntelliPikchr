@@ -1,4 +1,4 @@
-package com.yanncebron.intellijpikchr.editor
+package com.yanncebron.intellipikchr.editor
 
 import com.intellij.openapi.application.ModalityState
 import com.intellij.openapi.editor.Document

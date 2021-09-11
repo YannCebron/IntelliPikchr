@@ -1,4 +1,4 @@
-package com.yanncebron.intellijpikchr
+package com.yanncebron.intellipikchr
 
 import com.intellij.DynamicBundle
 import org.jetbrains.annotations.NonNls

@@ -1,4 +1,4 @@
-package com.yanncebron.intellijpikchr.editor
+package com.yanncebron.intellipikchr.editor
 
 import com.intellij.openapi.fileEditor.TextEditor
 import com.intellij.openapi.fileEditor.TextEditorWithPreview

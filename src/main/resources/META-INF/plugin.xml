@@ -16,12 +16,12 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <fileType name="Pikchr"
-                  implementationClass="com.yanncebron.intellijpikchr.PikchrFileType"
+                  implementationClass="com.yanncebron.intellipikchr.PikchrFileType"
                   fieldName="INSTANCE"
                   language="Pikchr"
                   extensions="pikchr"/>
 
-        <fileEditorProvider implementation="com.yanncebron.intellijpikchr.editor.PikchrSplitEditorProvider"/>
+        <fileEditorProvider implementation="com.yanncebron.intellipikchr.editor.PikchrSplitEditorProvider"/>
     </extensions>
 
 </idea-plugin>

@@ -1,8 +1,8 @@
-package com.yanncebron.intellijpikchr
+package com.yanncebron.intellipikchr
 
 import com.intellij.icons.AllIcons
 import com.intellij.openapi.fileTypes.LanguageFileType
-import com.yanncebron.intellijpikchr.lang.PikchrLanguage
+import com.yanncebron.intellipikchr.lang.PikchrLanguage
 import javax.swing.Icon
 
 class PikchrFileType : LanguageFileType(PikchrLanguage.INSTANCE) {
