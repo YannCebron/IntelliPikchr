@@ -1,18 +1,20 @@
-<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <id>com.github.yanncebron.intellipikchr</id>
-    <name>IntelliPikchr</name>
-    <vendor>yanncebron</vendor>
+    <id>com.yanncebron.intellipikchr</id>
+    <name>Pikchr</name>
+    <vendor email="yann.cebron@gmail.com" url="https://www.yanncebron.com">Yann Cébron</vendor>
+
+    <description><![CDATA[
+        Support <a href="https://pikchr.org/">Pikchr</a> markup language in IntelliJ-based IDEs.
+        <br>
+        <br>
+        <em>Pikchr (pronounced "picture") is a PIC-like markup language for diagrams in technical documentation.</em>
+    ]]></description>
+
+    <resource-bundle>messages.IntelliPikchr</resource-bundle>
 
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.yanncebron.intellipikchr.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.yanncebron.intellipikchr.services.MyProjectService"/>
     </extensions>
 
-    <applicationListeners>
-        <listener class="com.github.yanncebron.intellipikchr.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
-    </applicationListeners>
 </idea-plugin>
