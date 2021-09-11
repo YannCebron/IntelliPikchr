@@ -15,6 +15,11 @@
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
+        <fileType name="Pikchr"
+                  implementationClass="com.yanncebron.intellijpikchr.PikchrFileType"
+                  fieldName="INSTANCE"
+                  language="Pikchr"
+                  extensions="pikchr"/>
     </extensions>
 
 </idea-plugin>
