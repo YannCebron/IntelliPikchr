@@ -20,6 +20,8 @@
                   fieldName="INSTANCE"
                   language="Pikchr"
                   extensions="pikchr"/>
+
+        <fileEditorProvider implementation="com.yanncebron.intellijpikchr.editor.PikchrSplitEditorProvider"/>
     </extensions>
 
 </idea-plugin>
