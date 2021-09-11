@@ -1,6 +1,6 @@
 <idea-plugin>
     <id>com.yanncebron.intellipikchr</id>
-    <name>Pikchr</name>
+    <name>IntelliPikchr</name>
     <vendor email="yann.cebron@gmail.com" url="https://www.yanncebron.com">Yann Cébron</vendor>
 
     <description><![CDATA[
