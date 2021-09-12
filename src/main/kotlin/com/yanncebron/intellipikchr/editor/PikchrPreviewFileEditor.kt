@@ -113,11 +113,12 @@ class PikchrPreviewFileEditor(project: Project, private val virtualFile: Virtual
                         val errorResponse =
                             (it.connection as HttpURLConnection).errorStream?.readAllBytes()?.toString(Charsets.UTF_8)
                         if (errorResponse != null) {
-                            jcefPanel!!.setHtml(errorResponse)
+                            jcefPanel!!.setHtml(getCustomCss() + errorResponse)
                         } else {
                             val message = HttpRequests.createErrorMessage(e, it, false)
                             jcefPanel!!.setHtml(
-                                "<div style='color:red;font-family:sans-serif;font-weight:bold;'>" +
+                                getCustomCss() +
+                                        "<div style='color:red;font-family:sans-serif;font-weight:bold;'>" +
                                         "Could not connect to kroki server, please check network:<br><br>$message</div>"
                             )
                         }
