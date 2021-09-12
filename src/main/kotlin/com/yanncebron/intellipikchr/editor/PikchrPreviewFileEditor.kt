@@ -162,7 +162,7 @@ class PikchrPreviewFileEditor(project: Project, private val virtualFile: Virtual
 
         @Throws(IOException::class)
         private fun compress(source: ByteArray): ByteArray? {
-            val result = ByteArray(10*2048)
+            val result = ByteArray(source.size)
             val deflater = Deflater(Deflater.BEST_COMPRESSION)
             deflater.setInput(source, 0, source.size)
             deflater.finish()
