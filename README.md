@@ -11,6 +11,11 @@
 Support [Pikchr](https://pikchr.org/) language in IntelliJ-based IDEs. 
 
 _Pikchr (pronounced "picture") is a PIC-like markup language for diagrams in technical documentation._               
+           
+## Features
+
+- Split editor with preview pane for `.pikchr` files, using [kroki.io](https://kroki.io) for rendering
+- Adapt preview colors to IDE dark UI mode
 
 ## Installation
 
