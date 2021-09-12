@@ -12,6 +12,7 @@ import com.intellij.openapi.fileEditor.FileEditorState
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.util.Disposer
 import com.intellij.openapi.util.UserDataHolderBase
+import com.intellij.openapi.util.text.StringUtil
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.ui.ColorUtil
 import com.intellij.ui.jcef.JCEFHtmlPanel
@@ -96,6 +97,11 @@ class PikchrPreviewFileEditor(project: Project, private val virtualFile: Virtual
         val runnable = Runnable {
             if (jcefPanel == null) return@Runnable
 
+            if (StringUtil.isEmptyOrSpaces(document.text)) {
+                jcefPanel!!.setHtml(getCustomCss(true))
+                return@Runnable
+            }
+
             val server = "https://kroki.io/pikchr/svg"
 
             HttpRequests.post(server, "text/plain")
@@ -107,18 +113,18 @@ class PikchrPreviewFileEditor(project: Project, private val virtualFile: Virtual
 
                         val response = it.readString()
 
-                        jcefPanel!!.setHtml(getCustomCss() + response)
+                        jcefPanel!!.setHtml(getCustomCss(false) + response)
                     } catch (e: IOException) {
                         // show kroki error message if available
                         val errorResponse =
                             (it.connection as HttpURLConnection).errorStream?.readAllBytes()?.toString(Charsets.UTF_8)
                         if (errorResponse != null) {
-                            jcefPanel!!.setHtml(getCustomCss() + errorResponse)
+                            jcefPanel!!.setHtml(getCustomCss(true) + errorResponse)
                         } else {
                             val message = HttpRequests.createErrorMessage(e, it, false)
                             jcefPanel!!.setHtml(
-                                getCustomCss() +
-                                        "<div style='color:red;font-family:sans-serif;font-weight:bold;'>" +
+                                getCustomCss(true) +
+                                        "<div style='color:red; font-weight:bold;'>" +
                                         "Could not connect to kroki server, please check network:<br><br>$message</div>"
                             )
                         }
@@ -128,14 +134,17 @@ class PikchrPreviewFileEditor(project: Project, private val virtualFile: Virtual
         previewAlarm.addRequest(runnable, PREVIEW_UPDATE_DELAY)
     }
 
-    private fun getCustomCss(): String {
+    private fun getCustomCss(isErrorPage: Boolean): String {
         val colorsManager = EditorColorsManager.getInstance()
         val bgColor = ColorUtil.toHtmlColor(colorsManager.schemeForCurrentUITheme.defaultBackground)
         val isDark = colorsManager.isDarkEditor
-        val darkCss = if (isDark) "filter: invert(1) hue-rotate(180deg);" else ""
+        val darkCss = if (!isErrorPage && isDark) "filter: invert(1) hue-rotate(180deg);" else ""
         return "<style>" +
-                "body { background-color: $bgColor; }" +
-                ".pikchr { font-family: sans-serif; $darkCss }" +
+                "body { " +
+                "background-color: $bgColor; " +
+                "font-family: sans-serif;" +
+                darkCss +
+                "}" +
                 "</style>"
     }
 
