@@ -2,6 +2,7 @@ package com.yanncebron.intellipikchr.editor
 
 import com.intellij.openapi.application.ModalityState
 import com.intellij.openapi.editor.Document
+import com.intellij.openapi.editor.colors.EditorColorsManager
 import com.intellij.openapi.editor.event.DocumentEvent
 import com.intellij.openapi.editor.event.DocumentListener
 import com.intellij.openapi.fileEditor.FileDocumentManager
@@ -11,18 +12,17 @@ import com.intellij.openapi.fileEditor.FileEditorState
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.util.Disposer
 import com.intellij.openapi.util.UserDataHolderBase
-import com.intellij.openapi.util.text.StringUtil
 import com.intellij.openapi.vfs.VirtualFile
+import com.intellij.ui.ColorUtil
 import com.intellij.ui.jcef.JCEFHtmlPanel
 import com.intellij.util.Alarm
+import com.intellij.util.io.HttpRequests
 import java.awt.BorderLayout
 import java.awt.event.ComponentAdapter
 import java.awt.event.ComponentEvent
 import java.beans.PropertyChangeListener
-import java.io.ByteArrayOutputStream
 import java.io.IOException
-import java.util.*
-import java.util.zip.Deflater
+import java.net.HttpURLConnection
 import javax.swing.JComponent
 import javax.swing.JPanel
 
@@ -36,7 +36,8 @@ class PikchrPreviewFileEditor(project: Project, private val virtualFile: Virtual
     private var jcefPanel: JCEFHtmlPanel? = null
 
     private val docAlarm = Alarm(Alarm.ThreadToUse.POOLED_THREAD, this)
-    private val previewAlarm = Alarm(Alarm.ThreadToUse.SWING_THREAD, this)
+    private val swingAlarm = Alarm(Alarm.ThreadToUse.SWING_THREAD, this)
+    private val previewAlarm = Alarm(Alarm.ThreadToUse.POOLED_THREAD, this)
 
     init {
         document?.addDocumentListener(object : DocumentListener {
@@ -52,7 +53,7 @@ class PikchrPreviewFileEditor(project: Project, private val virtualFile: Virtual
         panel = JPanel(BorderLayout())
         panel.addComponentListener(object : ComponentAdapter() {
             override fun componentShown(e: ComponentEvent?) {
-                previewAlarm.addRequest({
+                swingAlarm.addRequest({
                     if (jcefPanel == null) {
                         attachPreview()
                     }
@@ -60,7 +61,7 @@ class PikchrPreviewFileEditor(project: Project, private val virtualFile: Virtual
             }
 
             override fun componentHidden(e: ComponentEvent?) {
-                previewAlarm.addRequest({
+                swingAlarm.addRequest({
                     if (jcefPanel != null) {
                         detachPreview()
                     }
@@ -73,7 +74,6 @@ class PikchrPreviewFileEditor(project: Project, private val virtualFile: Virtual
 
     private fun attachPreview() {
         jcefPanel = JCEFHtmlPanel("")
-        jcefPanel!!.cefBrowser.createImmediately() // todo makes it _a bit_ more reliable to show up on editor load
         jcefPanel!!.setHtml("<em>Initializing preview...</em>")
         panel.add(jcefPanel!!.component, BorderLayout.CENTER)
         initPreview()
@@ -96,18 +96,46 @@ class PikchrPreviewFileEditor(project: Project, private val virtualFile: Virtual
         val runnable = Runnable {
             if (jcefPanel == null) return@Runnable
 
-            val encodedDiagram = encode(
-                document.text
-                        + StringUtil.repeat(" ", 100) // todo fails for "too short input"
-            )
-//                println(encodedDiagram)
+            val server = "https://kroki.io/pikchr/svg"
 
-            jcefPanel!!.cefBrowser.loadURL("https://kroki.io/pikchr/svg/$encodedDiagram")
+            HttpRequests.post(server, "text/plain")
+                .throwStatusCodeException(false) // avoid logging all failing previews
+                .connect {
+
+                    try {
+                        it.write(document.text)
+
+                        val response = it.readString()
+
+                        jcefPanel!!.setHtml(getCustomCss() + response)
+                    } catch (e: IOException) {
+                        // show kroki error message if available
+                        val errorResponse =
+                            (it.connection as HttpURLConnection).errorStream?.readAllBytes()?.toString(Charsets.UTF_8)
+                        if (errorResponse != null) {
+                            jcefPanel!!.setHtml(errorResponse)
+                        } else {
+                            val message = HttpRequests.createErrorMessage(e, it, false)
+                            jcefPanel!!.setHtml(
+                                "<div style='color:red;font-family:sans-serif;font-weight:bold;'>" +
+                                        "Could not connect to kroki server, please check network:<br><br>$message</div>"
+                            )
+                        }
+                    }
+                }
         }
-        previewAlarm.addRequest(
-            runnable,
-            PREVIEW_UPDATE_DELAY, ModalityState.stateForComponent(component)
-        )
+        previewAlarm.addRequest(runnable, PREVIEW_UPDATE_DELAY)
+    }
+
+    private fun getCustomCss(): String {
+        val colorsManager = EditorColorsManager.getInstance()
+        val bgColor = ColorUtil.toHtmlColor(colorsManager.schemeForCurrentUITheme.defaultBackground)
+        val isDark = colorsManager.isDarkEditor
+        val darkCss = if (isDark) "filter: invert(1) hue-rotate(180deg);" else ""
+        return "<style>" +
+                "body { background-color: $bgColor; }" +
+                ".pikchr { font-family: sans-serif; $darkCss }" +
+                "</style>"
     }
 
     private fun initPreview() {
@@ -154,25 +182,5 @@ class PikchrPreviewFileEditor(project: Project, private val virtualFile: Virtual
     companion object {
         const val TYPING_UPDATE_DELAY = 100
         const val PREVIEW_UPDATE_DELAY = 20
-
-        @Throws(IOException::class)
-        private fun encode(decoded: String): String {
-            return String(Base64.getUrlEncoder().encode(compress(decoded.toByteArray(Charsets.UTF_8))), Charsets.UTF_8)
-        }
-
-        @Throws(IOException::class)
-        private fun compress(source: ByteArray): ByteArray? {
-            val result = ByteArray(source.size)
-            val deflater = Deflater(Deflater.BEST_COMPRESSION)
-            deflater.setInput(source, 0, source.size)
-            deflater.finish()
-            val compressedLength = deflater.deflate(result, 0, source.size, Deflater.FULL_FLUSH)
-            deflater.end()
-            ByteArrayOutputStream().use { byteArrayOutputStream ->
-                byteArrayOutputStream.write(result, 0, compressedLength)
-                return byteArrayOutputStream.toByteArray()
-            }
-        }
-
     }
 }
