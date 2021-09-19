@@ -44,6 +44,15 @@
                   extensions="pikchr"/>
 
         <fileEditorProvider implementation="com.yanncebron.intellipikchr.editor.PikchrSplitEditorProvider"/>
+
+
+        <projectConfigurable
+                id="intellipikchr"
+                key="settings.display.name"
+                groupId="language"
+                instance="com.yanncebron.intellipikchr.settings.IntelliPikchrSettingsConfigurable"/>
+        <projectService serviceImplementation="com.yanncebron.intellipikchr.settings.IntelliPikchrSettings"/>
+
     </extensions>
 
 </idea-plugin>

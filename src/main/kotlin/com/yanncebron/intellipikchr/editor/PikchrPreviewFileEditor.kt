@@ -35,6 +35,7 @@ import com.intellij.ui.jcef.JCEFHtmlPanel
 import com.intellij.util.Alarm
 import com.intellij.util.io.HttpRequests
 import com.yanncebron.intellipikchr.IntelliPikchrBundle
+import com.yanncebron.intellipikchr.settings.IntelliPikchrSettings
 import java.awt.BorderLayout
 import java.awt.event.ComponentAdapter
 import java.awt.event.ComponentEvent
@@ -47,6 +48,8 @@ import javax.swing.JPanel
 
 class PikchrPreviewFileEditor(project: Project, private val virtualFile: VirtualFile) : UserDataHolderBase(),
     FileEditor {
+
+    private val settings = IntelliPikchrSettings.getInstance(project)
 
     private val document: Document? = FileDocumentManager.getInstance().getDocument(virtualFile)
 
@@ -119,7 +122,7 @@ class PikchrPreviewFileEditor(project: Project, private val virtualFile: Virtual
                 return@Runnable
             }
 
-            val server = "https://kroki.io/pikchr/svg"
+            val server = settings.krokiServerUrl + "/pikchr/svg"
 
             HttpRequests.post(server, "text/plain")
                 .throwStatusCodeException(false) // avoid logging all failing previews
@@ -149,18 +152,20 @@ class PikchrPreviewFileEditor(project: Project, private val virtualFile: Virtual
                     }
                 }
         }
-        previewAlarm.addRequest(runnable, PREVIEW_UPDATE_DELAY)
+        previewAlarm.addRequest(runnable, settings.updatePreviewDelay)
     }
 
     private fun getCustomCss(isErrorPage: Boolean): String {
         val colorsManager = EditorColorsManager.getInstance()
         val bgColor = ColorUtil.toHtmlColor(colorsManager.schemeForCurrentUITheme.defaultBackground)
         val isDark = colorsManager.isDarkEditor
-        val darkCss = if (!isErrorPage && isDark) "filter: invert(1) hue-rotate(180deg);" else ""
+        val darkCss = if (!isErrorPage && isDark && settings.previewAdaptDarkColorScheme)
+            "filter: invert(1) hue-rotate(180deg);" else ""
+
         return "<style>" +
                 "body { " +
                 "background-color: $bgColor; " +
-                "font-family: sans-serif;" +
+                settings.previewCustomCss +
                 darkCss +
                 "}" +
                 "</style>"
@@ -209,6 +214,5 @@ class PikchrPreviewFileEditor(project: Project, private val virtualFile: Virtual
 
     companion object {
         const val TYPING_UPDATE_DELAY = 100
-        const val PREVIEW_UPDATE_DELAY = 20
     }
 }
