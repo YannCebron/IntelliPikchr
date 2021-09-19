@@ -23,6 +23,13 @@
         <br>
         <br>
         <em>Pikchr (pronounced "picture") is a PIC-like markup language for diagrams in technical documentation.</em>
+
+        <br>
+        Features:
+        <ul>
+            <li>Split editor with preview pane for <code>.pikchr</code> files, using kroki.io for rendering</li>
+            <li>Adapt preview colors to IDE dark UI mode</li>
+        </ul>
     ]]></description>
 
     <resource-bundle>messages.IntelliPikchr</resource-bundle>
