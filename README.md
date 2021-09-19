@@ -34,11 +34,13 @@ _Pikchr (pronounced "picture") is a PIC-like markup language for diagrams in tec
   using
   <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>⚙️</kbd> > <kbd>Install plugin from disk...</kbd>
                              
-## License/Code of Conduct
+## License | Code of Conduct | Credits
 
 Licensed under [Apache 2 License](LICENSE)
 
 [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md)
+                                      
+Split editor adapted from IntelliJ IDEA [Markdown plugin](https://github.com/JetBrains/intellij-community/tree/master/plugins/markdown)
 
 ---
 Plugin based on the [IntelliJ Platform Plugin Template][template].
