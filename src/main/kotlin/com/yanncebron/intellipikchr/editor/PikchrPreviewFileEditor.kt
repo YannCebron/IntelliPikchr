@@ -18,6 +18,7 @@ import com.intellij.ui.ColorUtil
 import com.intellij.ui.jcef.JCEFHtmlPanel
 import com.intellij.util.Alarm
 import com.intellij.util.io.HttpRequests
+import com.yanncebron.intellipikchr.IntelliPikchrBundle
 import java.awt.BorderLayout
 import java.awt.event.ComponentAdapter
 import java.awt.event.ComponentEvent
@@ -75,7 +76,7 @@ class PikchrPreviewFileEditor(project: Project, private val virtualFile: Virtual
 
     private fun attachPreview() {
         jcefPanel = JCEFHtmlPanel("")
-        jcefPanel!!.setHtml("<em>Initializing preview...</em>")
+        jcefPanel!!.setHtml("<em>" + IntelliPikchrBundle.message("preview.initializing") + "</em>")
         panel.add(jcefPanel!!.component, BorderLayout.CENTER)
         initPreview()
     }
@@ -125,7 +126,8 @@ class PikchrPreviewFileEditor(project: Project, private val virtualFile: Virtual
                             jcefPanel!!.setHtml(
                                 getCustomCss(true) +
                                         "<div style='color:red; font-weight:bold;'>" +
-                                        "Could not connect to kroki server, please check network:<br><br>$message</div>"
+                                        IntelliPikchrBundle.message("preview.failed") +
+                                        "<br><br>$message</div>"
                             )
                         }
                     }
@@ -174,7 +176,7 @@ class PikchrPreviewFileEditor(project: Project, private val virtualFile: Virtual
     }
 
     override fun getName(): String {
-        return "Pikchr Preview File Editor"
+        return IntelliPikchrBundle.message("preview.editor.name")
     }
 
     override fun setState(state: FileEditorState) = Unit
