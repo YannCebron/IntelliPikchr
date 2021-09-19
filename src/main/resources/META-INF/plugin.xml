@@ -55,4 +55,8 @@
 
     </extensions>
 
+    <applicationListeners>
+        <listener topic="com.intellij.ide.ui.LafManagerListener"
+                  class="com.yanncebron.intellipikchr.editor.PikchrEditorLafListener"/>
+    </applicationListeners>
 </idea-plugin>
