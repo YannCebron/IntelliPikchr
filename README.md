@@ -6,27 +6,33 @@
 
 > ⚠️ Plugin is in early development and unreleased
 
-Support [Pikchr](https://pikchr.org/) language in IntelliJ-based IDEs. 
+Support [Pikchr](https://pikchr.org/) language in IntelliJ-based IDEs.
 
-_Pikchr (pronounced "picture") is a PIC-like markup language for diagrams in technical documentation._               
-           
+_Pikchr (pronounced "picture") is a PIC-like markup language for diagrams in technical documentation._
+
 ## Features
 
 - Split editor with preview pane for `.pikchr` files, using [kroki.io](https://kroki.io) for rendering
 - Adapt preview colors to IDE dark UI mode
 
+### Plans/Ideas
+
+- Full language support (semantic highlighting, completion, refactoring, ...)
+- Previews for diagrams embedded in Markdown code fences
+
 ## Installation
 
 - Using IDE built-in plugin system:
-  
-  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "IntelliPikchr"</kbd> >
+
+  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "
+  IntelliPikchr"</kbd> >
   <kbd>Install Plugin</kbd>
-  
+
 - Manually:
 
-  Download the [latest release](https://github.com/YannCebron/IntelliPikchr/releases/latest) and install it manually using
+  Download the [latest release](https://github.com/YannCebron/IntelliPikchr/releases/latest) and install it manually
+  using
   <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>⚙️</kbd> > <kbd>Install plugin from disk...</kbd>
-
 
 ---
 Plugin based on the [IntelliJ Platform Plugin Template][template].
