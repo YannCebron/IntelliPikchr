@@ -33,6 +33,12 @@ _Pikchr (pronounced "picture") is a PIC-like markup language for diagrams in tec
   Download the [latest release](https://github.com/YannCebron/IntelliPikchr/releases/latest) and install it manually
   using
   <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>⚙️</kbd> > <kbd>Install plugin from disk...</kbd>
+                             
+## License/Code of Conduct
+
+Licensed under [Apache 2 License](LICENSE)
+
+[Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md)
 
 ---
 Plugin based on the [IntelliJ Platform Plugin Template][template].
