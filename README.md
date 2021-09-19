@@ -9,6 +9,8 @@
 Support [Pikchr](https://pikchr.org/) language in IntelliJ-based IDEs.
 
 _Pikchr (pronounced "picture") is a PIC-like markup language for diagrams in technical documentation._
+                   
+![IntelliPikchr](docs/intellipikchr.png)
 
 ## Features
 
