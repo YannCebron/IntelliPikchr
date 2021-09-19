@@ -70,6 +70,12 @@ class IntelliPikchrSettingsConfigurable(private val project: Project) :
         }
     }
 
+    override fun apply() {
+        settings.update {
+            super.apply()
+        }
+    }
+
     companion object {
         const val DEFAULT_KROKI_URL = "https://kroki.io"
     }

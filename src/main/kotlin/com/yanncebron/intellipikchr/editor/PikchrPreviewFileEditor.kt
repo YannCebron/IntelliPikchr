@@ -91,6 +91,13 @@ class PikchrPreviewFileEditor(project: Project, private val virtualFile: Virtual
         })
 
         attachPreview()
+
+        project.messageBus.connect(this)
+            .subscribe(IntelliPikchrSettings.ChangeListener.TOPIC, object : IntelliPikchrSettings.ChangeListener {
+                override fun settingsChanged(settings: IntelliPikchrSettings) {
+                    initPreview()
+                }
+            })
     }
 
     private fun attachPreview() {

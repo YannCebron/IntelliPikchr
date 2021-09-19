@@ -18,6 +18,7 @@ package com.yanncebron.intellipikchr.settings
 
 import com.intellij.openapi.components.*
 import com.intellij.openapi.project.Project
+import com.intellij.util.messages.Topic
 
 @State(name = "IntelliPikchrSettings", storages = [Storage(StoragePathMacros.WORKSPACE_FILE)])
 class IntelliPikchrSettings(val project: Project) :
@@ -42,12 +43,29 @@ class IntelliPikchrSettings(val project: Project) :
         set(value) {
             state.updatePreviewDelay = value
         }
-    
+
     var previewCustomCss
         get() = state.previewCustomCss
         set(value) {
             state.previewCustomCss = value
         }
+
+
+    fun update(block: (IntelliPikchrSettings) -> Unit) {
+        val publisher = project.messageBus.syncPublisher(ChangeListener.TOPIC)
+        block(this)
+        publisher.settingsChanged(this)
+    }
+
+    interface ChangeListener {
+
+        fun settingsChanged(settings: IntelliPikchrSettings) = Unit
+
+        companion object {
+            @JvmField
+            val TOPIC = Topic.create("IntelliPikchrSettings", ChangeListener::class.java)
+        }
+    }
 
     companion object {
         @JvmStatic
