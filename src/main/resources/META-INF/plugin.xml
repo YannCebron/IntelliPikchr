@@ -1,4 +1,20 @@
 <idea-plugin url="https://github.com/YannCebron/IntelliPikchr">
+<!--
+    Copyright $today.year The Authors
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<idea-plugin>
     <id>com.yanncebron.intellipikchr</id>
     <name>IntelliPikchr</name>
     <vendor email="yann.cebron@gmail.com" url="https://www.yanncebron.com">Yann Cébron</vendor>
@@ -8,6 +24,13 @@
         <br>
         <br>
         <em>Pikchr (pronounced "picture") is a PIC-like markup language for diagrams in technical documentation.</em>
+
+        <br>
+        Features:
+        <ul>
+            <li>Split editor with preview pane for <code>.pikchr</code> files, using kroki.io for rendering</li>
+            <li>Adapt preview colors to IDE dark UI mode</li>
+        </ul>
     ]]></description>
 
     <resource-bundle>messages.IntelliPikchr</resource-bundle>
@@ -22,6 +45,19 @@
                   extensions="pikchr"/>
 
         <fileEditorProvider implementation="com.yanncebron.intellipikchr.editor.PikchrSplitEditorProvider"/>
+
+
+        <projectConfigurable
+                id="intellipikchr"
+                key="settings.display.name"
+                groupId="language"
+                instance="com.yanncebron.intellipikchr.settings.IntelliPikchrSettingsConfigurable"/>
+        <projectService serviceImplementation="com.yanncebron.intellipikchr.settings.IntelliPikchrSettings"/>
+
     </extensions>
 
+    <applicationListeners>
+        <listener topic="com.intellij.ide.ui.LafManagerListener"
+                  class="com.yanncebron.intellipikchr.editor.PikchrEditorLafListener"/>
+    </applicationListeners>
 </idea-plugin>

@@ -1,3 +1,19 @@
+/*
+ * Copyright 2021 The Authors
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.yanncebron.intellipikchr.editor
 
 import com.intellij.openapi.application.ModalityState
@@ -18,6 +34,8 @@ import com.intellij.ui.ColorUtil
 import com.intellij.ui.jcef.JCEFHtmlPanel
 import com.intellij.util.Alarm
 import com.intellij.util.io.HttpRequests
+import com.yanncebron.intellipikchr.IntelliPikchrBundle
+import com.yanncebron.intellipikchr.settings.IntelliPikchrSettings
 import java.awt.BorderLayout
 import java.awt.event.ComponentAdapter
 import java.awt.event.ComponentEvent
@@ -30,6 +48,8 @@ import javax.swing.JPanel
 
 class PikchrPreviewFileEditor(project: Project, private val virtualFile: VirtualFile) : UserDataHolderBase(),
     FileEditor {
+
+    private val settings = IntelliPikchrSettings.getInstance(project)
 
     private val document: Document? = FileDocumentManager.getInstance().getDocument(virtualFile)
 
@@ -71,11 +91,18 @@ class PikchrPreviewFileEditor(project: Project, private val virtualFile: Virtual
         })
 
         attachPreview()
+
+        project.messageBus.connect(this)
+            .subscribe(IntelliPikchrSettings.ChangeListener.TOPIC, object : IntelliPikchrSettings.ChangeListener {
+                override fun settingsChanged(settings: IntelliPikchrSettings) {
+                    initPreview()
+                }
+            })
     }
 
     private fun attachPreview() {
         jcefPanel = JCEFHtmlPanel("")
-        jcefPanel!!.setHtml("<em>Initializing preview...</em>")
+        jcefPanel!!.setHtml("<em>" + IntelliPikchrBundle.message("preview.initializing") + "</em>")
         panel.add(jcefPanel!!.component, BorderLayout.CENTER)
         initPreview()
     }
@@ -102,7 +129,7 @@ class PikchrPreviewFileEditor(project: Project, private val virtualFile: Virtual
                 return@Runnable
             }
 
-            val server = "https://kroki.io/pikchr/svg"
+            val server = settings.krokiServerUrl + "/pikchr/svg"
 
             HttpRequests.post(server, "text/plain")
                 .throwStatusCodeException(false) // avoid logging all failing previews
@@ -125,24 +152,27 @@ class PikchrPreviewFileEditor(project: Project, private val virtualFile: Virtual
                             jcefPanel!!.setHtml(
                                 getCustomCss(true) +
                                         "<div style='color:red; font-weight:bold;'>" +
-                                        "Could not connect to kroki server, please check network:<br><br>$message</div>"
+                                        IntelliPikchrBundle.message("preview.failed") +
+                                        "<br><br>$message</div>"
                             )
                         }
                     }
                 }
         }
-        previewAlarm.addRequest(runnable, PREVIEW_UPDATE_DELAY)
+        previewAlarm.addRequest(runnable, settings.updatePreviewDelay)
     }
 
     private fun getCustomCss(isErrorPage: Boolean): String {
         val colorsManager = EditorColorsManager.getInstance()
         val bgColor = ColorUtil.toHtmlColor(colorsManager.schemeForCurrentUITheme.defaultBackground)
         val isDark = colorsManager.isDarkEditor
-        val darkCss = if (!isErrorPage && isDark) "filter: invert(1) hue-rotate(180deg);" else ""
+        val darkCss = if (!isErrorPage && isDark && settings.previewAdaptDarkColorScheme)
+            "filter: invert(1) hue-rotate(180deg);" else ""
+
         return "<style>" +
                 "body { " +
                 "background-color: $bgColor; " +
-                "font-family: sans-serif;" +
+                settings.previewCustomCss +
                 darkCss +
                 "}" +
                 "</style>"
@@ -174,7 +204,7 @@ class PikchrPreviewFileEditor(project: Project, private val virtualFile: Virtual
     }
 
     override fun getName(): String {
-        return "Pikchr Preview File Editor"
+        return IntelliPikchrBundle.message("preview.editor.name")
     }
 
     override fun setState(state: FileEditorState) = Unit
@@ -191,6 +221,5 @@ class PikchrPreviewFileEditor(project: Project, private val virtualFile: Virtual
 
     companion object {
         const val TYPING_UPDATE_DELAY = 100
-        const val PREVIEW_UPDATE_DELAY = 20
     }
 }

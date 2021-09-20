@@ -14,19 +14,17 @@
  * limitations under the License.
  */
 
-package com.yanncebron.intellipikchr.lang
+package com.yanncebron.intellipikchr.settings
 
-import com.intellij.lang.Language
-import com.intellij.openapi.fileTypes.LanguageFileType
-import com.yanncebron.intellipikchr.PikchrFileType
+import com.intellij.openapi.components.BaseState
 
-class PikchrLanguage private constructor() : Language("Pikchr") {
+class IntelliPikchrSettingsState : BaseState() {
 
-    override fun getAssociatedFileType(): LanguageFileType {
-        return PikchrFileType.INSTANCE
-    }
+    var krokiServerUrl by string("https://kroki.io")
 
-    companion object {
-        val INSTANCE = PikchrLanguage()
-    }
+    var updatePreviewDelay by property(200)
+
+    var previewAdaptDarkColorScheme by property(true)
+
+    var previewCustomCss by string("font-family: sans-serif;")
 }
