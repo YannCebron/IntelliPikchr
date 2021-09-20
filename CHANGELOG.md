@@ -9,7 +9,7 @@
 
 - Plugin marked compatible with 2021.3 EAP
 
-## [0.2]
+## [0.2.0]
 
 ### Added
 
