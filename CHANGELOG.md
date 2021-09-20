@@ -1,8 +1,15 @@
 <!-- Keep a Changelog guide -> https://keepachangelog.com -->
 
 # IntelliPikchr Changelog
-
+       
 ## [Unreleased]
+### Added
+       
+### Changed
+
+- Plugin marked compatible with 2021.3 EAP
+
+## [0.2]
 
 ### Added
 
