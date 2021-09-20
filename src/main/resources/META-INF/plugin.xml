@@ -13,7 +13,7 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<idea-plugin>
+<idea-plugin url="https://github.com/YannCebron/IntelliPikchr">
     <id>com.yanncebron.intellipikchr</id>
     <name>IntelliPikchr</name>
     <vendor email="yann.cebron@gmail.com" url="https://www.yanncebron.com">Yann Cébron</vendor>
