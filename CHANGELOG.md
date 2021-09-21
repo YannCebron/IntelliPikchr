@@ -8,6 +8,7 @@
 ### Changed
 
 - Plugin marked compatible with 2021.3 EAP
+- Make Settings searchable  
 
 ## [0.2.0]
 

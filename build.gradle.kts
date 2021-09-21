@@ -79,10 +79,6 @@ tasks {
         })
     }
 
-    buildSearchableOptions {
-        enabled = false
-    }
-
     runPluginVerifier {
         ideVersions.set(properties("pluginVerifierIdeVersions").split(',').map(String::trim).filter(String::isNotEmpty))
     }
