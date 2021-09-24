@@ -37,6 +37,8 @@
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
+        <errorHandler implementation="com.yanncebron.intellipikchr.ide.IntelliPikchrErrorReportSubmitter"/>
+
         <fileType name="Pikchr"
                   implementationClass="com.yanncebron.intellipikchr.PikchrFileType"
                   fieldName="INSTANCE"
