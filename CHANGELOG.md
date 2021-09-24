@@ -1,21 +1,20 @@
 <!-- Keep a Changelog guide -> https://keepachangelog.com -->
 
 # IntelliPikchr Changelog
-       
-## [Unreleased]
-### Added
 
+## [Unreleased]
+
+## [0.2.1]
+### Added
 - Open Settings from preview editor toolbar
        
-### Changed
 
+### Changed
 - Plugin marked compatible with 2021.3 EAP
-- Settings made searchable  
+- Settings made searchable
 
 ## [0.2.0]
-
 ### Added
-
 - Split editor with preview pane for `.pikchr` files, using [kroki.io](https://kroki.io) or self-hosted server for rendering
 - Adapt preview colors to IDE dark UI mode
 - Tune preview with custom CSS
