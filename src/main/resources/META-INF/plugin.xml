@@ -59,4 +59,12 @@
         <listener topic="com.intellij.ide.ui.LafManagerListener"
                   class="com.yanncebron.intellipikchr.editor.PikchrEditorLafListener"/>
     </applicationListeners>
+
+    <actions>
+        <group id="PikchrEditorRightToolbarGroup">
+            <action id="PikchrOpenSettings"
+                    class="com.yanncebron.intellipikchr.settings.IntelliPikchrOpenSettingsAction"
+                    icon="AllIcons.General.Settings"/>
+        </group>
+    </actions>
 </idea-plugin>

@@ -4,6 +4,8 @@
        
 ## [Unreleased]
 ### Added
+
+- Open Settings from preview editor toolbar
        
 ### Changed
 
