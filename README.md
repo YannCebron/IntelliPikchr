@@ -23,6 +23,8 @@ _Pikchr (pronounced "picture") is a PIC-like markup language for diagrams in tec
 - Previews for diagrams embedded in Markdown code fences
 
 ## Installation
+            
+- Open [Plugin Homepage](https://plugins.jetbrains.com/plugin/17624-intellipikchr) and click *Install to...* button on upper right
 
 - Using IDE built-in plugin system:
 
