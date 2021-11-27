@@ -3,6 +3,8 @@
 # IntelliPikchr Changelog
 
 ## [Unreleased]
+
+## [0.2.2]
 ### Added
 - Automated exception reporting to GitHub
 
