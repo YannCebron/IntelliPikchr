@@ -28,8 +28,10 @@
         <br>
         Features:
         <ul>
-            <li>Split editor with preview pane for <code>.pikchr</code> files, using <a href="https://kroki.io/">kroki.io</a> for rendering</li>
+            <li>Split editor with preview pane for <code>.pikchr</code> files, using <a href="https://kroki.io/">kroki.io</a> or self-hosted server for rendering</li>
             <li>Adapt preview colors to IDE dark UI mode</li>
+            <li>Tune preview with custom CSS</li>
+            <li>See <em>Settings/Preferences | Languages & Frameworks | IntelliPikchr</em> to customize (see Settings icon in editor toolbar)</li>
         </ul>
     ]]></description>
 
