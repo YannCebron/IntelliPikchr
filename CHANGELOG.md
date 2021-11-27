@@ -7,7 +7,7 @@
 - Automated exception reporting to GitHub
 
 ### Changed
-- Preview editor: force toolbar on left side to disable non-supported "floating toolbar" mode
+- Preview editor: force toolbar on left side to disable non-supported _floating toolbar_ mode
 
 ## [0.2.1]
 ### Added
