@@ -23,7 +23,7 @@ import com.intellij.openapi.fileEditor.TextEditorWithPreview
 
 class PikchrEditorWithPreview(editor: TextEditor, preview: PikchrPreviewFileEditor) :
     TextEditorWithPreview(editor, preview, "Pikchr Split Editor", Layout.SHOW_EDITOR_AND_PREVIEW) {
-    override fun createRightToolbarActionGroup(): ActionGroup? {
+    override fun createLeftToolbarActionGroup(): ActionGroup? {
         return ActionManager.getInstance().getAction("PikchrEditorRightToolbarGroup") as ActionGroup?
     }
 }
