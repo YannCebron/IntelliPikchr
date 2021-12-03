@@ -1,6 +1,7 @@
 # IntelliPikchr
 
 ![Build](https://github.com/YannCebron/IntelliPikchr/workflows/Build/badge.svg)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md)
 [![Version](https://img.shields.io/jetbrains/plugin/v/17624.svg)](https://plugins.jetbrains.com/plugin/17624)
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/17624.svg)](https://plugins.jetbrains.com/plugin/17624)
 
