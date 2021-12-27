@@ -7,6 +7,7 @@
 ## [0.2.2]
 ### Added
 - Syntax highlighting, customize in _Settings/Preferences \| Editor \| Color Scheme \| Pikchr_
+- Highlight matching braces
 - Bundled dictionary with Pikchr specific terms
 - Automated exception reporting to GitHub
 

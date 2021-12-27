@@ -63,6 +63,9 @@
         <lang.commenter
                 language="Pikchr"
                 implementationClass="com.yanncebron.intellipikchr.lang.PikchrCommenter"/>
+        <lang.braceMatcher
+                language="Pikchr"
+                implementationClass="com.yanncebron.intellipikchr.lang.PikchrBraceMatcher"/>
 
 
         <projectConfigurable
