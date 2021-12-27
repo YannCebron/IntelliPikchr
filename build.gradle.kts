@@ -1,4 +1,4 @@
-import org.jetbrains.changelog.markdownToHTML
+import org.jetbrains.grammarkit.tasks.GenerateLexerTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 fun properties(key: String) = project.findProperty(key).toString()
@@ -12,6 +12,8 @@ plugins {
     id("org.jetbrains.intellij") version "1.3.0"
     // Gradle Changelog Plugin
     id("org.jetbrains.changelog") version "1.3.1"
+    // GrammarKit
+    id("org.jetbrains.grammarkit") version "2021.2.1"
 }
 
 group = properties("pluginGroup")
@@ -20,6 +22,18 @@ version = properties("pluginVersion")
 // Configure project's dependencies
 repositories {
     mavenCentral()
+}
+
+idea {
+    module {
+        generatedSourceDirs.add(file("src/gen"))
+    }
+}
+
+sourceSets {
+    main {
+        java.srcDirs("src/gen")
+    }
 }
 
 // Configure Gradle IntelliJ Plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
@@ -40,6 +54,10 @@ changelog {
     groups.set(emptyList())
 }
 
+grammarKit {
+    jflexRelease.set("1.7.0-2")
+}
+
 tasks {
     // Set the JVM compatibility versions
     properties("javaVersion").let {
@@ -54,6 +72,14 @@ tasks {
 
     wrapper {
         gradleVersion = properties("gradleVersion")
+    }
+
+    task<GenerateLexerTask>("generatePikchrLexer") {
+        source.set("src/main/grammar/_PikchrLexer.flex")
+        skeleton.set(file("src/main/grammar/idea-flex.skeleton"))
+        targetDir.set("src/gen/com/yanncebron/intellipikchr/lang/lexer/")
+        targetClass.set("_PikchrLexer")
+        purgeOldFiles.set(true)
     }
 
     patchPluginXml {

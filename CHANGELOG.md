@@ -6,6 +6,7 @@
 
 ## [0.2.2]
 ### Added
+- Syntax highlighting, customize in _Settings/Preferences \| Editor \| Color Scheme \| Pikchr_
 - Automated exception reporting to GitHub
 
 ### Changed
