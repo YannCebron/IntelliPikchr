@@ -48,6 +48,8 @@
                   fieldName="INSTANCE"
                   language="Pikchr"
                   extensions="pikchr"/>
+        <problemFileHighlightFilter
+                implementation="com.yanncebron.intellipikchr.lang.PikchrProblemFileHighlightFilter"/>
 
         <fileEditorProvider implementation="com.yanncebron.intellipikchr.editor.PikchrSplitEditorProvider"/>
 
