@@ -24,8 +24,14 @@ class PikchrLiteralLexerTest : PikchrLexerTestCase() {
         """.trimIndent())
     }
 
+    fun testStringNoClosingQuote() {
+        doTest("\"string", """
+            string ('"string')            
+        """.trimIndent())
+    }
+
     fun testStringEscapes() {
-        doTest("\"Testing \\\\backslash\\\\ support\" \"Also \\\"autofit\\\"\"","""
+        doTest("\"Testing \\\\backslash\\\\ support\" \"Also \\\"autofit\\\"\"", """
             string ('"Testing \\backslash\\ support"')
             WHITE_SPACE (' ')
             string ('"Also \"autofit\""')            

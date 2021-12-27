@@ -27,7 +27,7 @@ CRLF=[\r\n]
 LINE_COMMENT=(#|"//").*
 BLOCK_COMMENT="/*" ~"*/"
 
-STRING=\"([^\"\\]|\\.)*\"
+STRING=\"([^\"\\]|\\.)*\"?
 DECIMAL=[0-9]+
 FLOAT=[0-9]*[.][0-9]+
 HEX=0x[0-9a-fA-F]+
