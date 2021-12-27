@@ -60,6 +60,10 @@
         <colorSettingsPage
                 implementation="com.yanncebron.intellipikchr.lang.highlighting.PikchrColorSettingsPage"/>
 
+        <lang.commenter
+                language="Pikchr"
+                implementationClass="com.yanncebron.intellipikchr.lang.PikchrCommenter"/>
+
 
         <projectConfigurable
                 id="intellipikchr"
