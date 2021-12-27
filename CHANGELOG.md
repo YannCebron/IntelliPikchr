@@ -10,6 +10,9 @@
 - Highlight matching braces
 - Dedicated _Pikchr_ context for _Settings/Preferences \| Editor \| Live Templates_
 - Bundled dictionary with Pikchr specific terms
+
+## [0.2.2]
+### Added
 - Automated exception reporting to GitHub
 
 ### Changed
