@@ -72,6 +72,8 @@
                 language="Pikchr"
                 implementationClass="com.yanncebron.intellipikchr.lang.PikchrBraceMatcher"/>
 
+        <liveTemplateContext
+                implementation="com.yanncebron.intellipikchr.lang.PikchrTemplateContextType"/>
 
         <projectConfigurable
                 id="intellipikchr"

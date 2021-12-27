@@ -8,6 +8,7 @@
 ### Added
 - Syntax highlighting, customize in _Settings/Preferences \| Editor \| Color Scheme \| Pikchr_
 - Highlight matching braces
+- Dedicated _Pikchr_ context for _Settings/Preferences \| Editor \| Live Templates_
 - Bundled dictionary with Pikchr specific terms
 - Automated exception reporting to GitHub
 
