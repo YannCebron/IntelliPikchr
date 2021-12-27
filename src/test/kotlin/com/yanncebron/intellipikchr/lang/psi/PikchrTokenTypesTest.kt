@@ -55,7 +55,8 @@ class PikchrTokenTypesTest : BasePlatformTestCase() {
                 PikchrTokenTypes.DOT,
                 PikchrTokenTypes.SEMICOLON,
                 PikchrTokenTypes.COLON,
-                PikchrTokenTypes.PERCENT
+                PikchrTokenTypes.PERCENT,
+                PikchrTokenTypes.DOLLAR
         )
     }
 
