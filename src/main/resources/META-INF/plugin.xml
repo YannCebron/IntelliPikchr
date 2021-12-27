@@ -51,6 +51,9 @@
 
         <fileEditorProvider implementation="com.yanncebron.intellipikchr.editor.PikchrSplitEditorProvider"/>
 
+        <spellchecker.bundledDictionaryProvider
+                implementation="com.yanncebron.intellipikchr.lang.spellchecker.PikchrBundledDictionaryProvider"/>
+
         <lang.syntaxHighlighterFactory
                 language="Pikchr"
                 implementationClass="com.yanncebron.intellipikchr.lang.highlighting.PikchrSyntaxHighlighterFactory"/>
