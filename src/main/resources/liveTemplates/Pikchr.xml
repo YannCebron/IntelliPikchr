@@ -15,8 +15,8 @@
   -->
 
 <templateSet group="Pikchr">
-    <template name="block" value="$BLOCK_NAME$: {&#10;  $END$&#10;}&#10;" description="Define block" toReformat="true" toShortenFQNames="true">
-        <variable name="BLOCK_NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <template name="container" value="$CONTAINER_NAME$: {&#10;  $END$&#10;}&#10;" description="Define container" toReformat="true" toShortenFQNames="true">
+        <variable name="CONTAINER_NAME" expression="" defaultValue="" alwaysStopAt="true" />
         <context>
             <option name="Pikchr" value="true" />
         </context>

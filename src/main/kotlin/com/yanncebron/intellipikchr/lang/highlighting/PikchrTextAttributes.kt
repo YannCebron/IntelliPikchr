@@ -72,9 +72,6 @@ object PikchrTextAttributes {
     @JvmField
     val SEMICOLON = createTextAttributesKey("PIKCHR_SEMICOLON", DefaultLanguageHighlighterColors.SEMICOLON)
 
-    @JvmField
-    val DOLLAR = createTextAttributesKey("PIKCHR_DOLLAR", DefaultLanguageHighlighterColors.GLOBAL_VARIABLE)
-
 
     @JvmField
     val LABEL = createTextAttributesKey("PIKCHR_LABEL", DefaultLanguageHighlighterColors.LABEL)

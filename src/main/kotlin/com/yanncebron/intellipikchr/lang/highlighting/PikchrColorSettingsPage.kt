@@ -45,6 +45,7 @@ class PikchrColorSettingsPage : ColorSettingsPage {
                 createDescriptor("color.settings.group.root", "attribute.descriptor.function", PikchrTextAttributes.FUNCTION),
                 createDescriptor("color.settings.group.root", "attribute.descriptor.attribute", PikchrTextAttributes.ATTRIBUTE),
                 createDescriptor("color.settings.group.root", "attribute.descriptor.brackets", PikchrTextAttributes.BRACKETS),
+                createDescriptor("color.settings.group.root", "attribute.descriptor.debug", PikchrTextAttributes.DEBUG),
 
                 createDescriptor("color.settings.group.comment", "attribute.descriptor.line.comment", PikchrTextAttributes.LINE_COMMENT),
                 createDescriptor("color.settings.group.comment", "attribute.descriptor.block.comment", PikchrTextAttributes.BLOCK_COMMENT),
@@ -78,50 +79,24 @@ class PikchrColorSettingsPage : ColorSettingsPage {
     lineht *= 0.4
     ${'$'}margin = lineht*2.5
     scale = 0.75
-    fontscale = 1.1
-    charht *= 1.15
     down
-In: box "Interface" wid 150% ht 75% fill white
-    arrow
-CP: box same "SQL Command" "Processor"
-    arrow
-VM: box same "Virtual Machine"
-    arrow down 1.25*\${'$'}margin
-BT: box same "B-Tree"
-    arrow
-    box same "Pager"
-    arrow
-OS: box same "OS Interface"
-    box same with .w at 1.25*\${'$'}margin east of 1st box.e "Tokenizer"
-    arrow
-    box same "Parser"
-    arrow
-CG: box same ht 200% "Code" "Generator"
-UT: box same as 1st box at (Tokenizer,Pager) "Utilities"
-    move lineht
-TC: box same "Test Code"
-    arrow from CP to 1/4<Tokenizer.sw,Tokenizer.nw> chop
-    arrow from 1/3<CG.nw,CG.sw> to CP chop
+In: box "Interface" wid 150% ht 75% fill 0x9accfc
+TC: box same "Test Code" // line comment
+    arrow <-> from 1/3<CG.nw,CG.sw> \
+        to CP chop
+    circle "C3" at dist(C2,C4) heading 30 from C2
+    
+/* Block comment */    
+define ndblock {
+    box wid boxwid/2 ht boxht/2; box
+}
 
-    box ht (In.n.y-VM.s.y)+\${'$'}margin wid In.wid+\${'$'}margin \
-       at CP fill 0xd8ecd0 behind In
-    line invis from 0.25*\${'$'}margin east of last.sw up last.ht \
-        "Core" italic aligned
+Container: [
+    box "1st Container Element"
+]
 
-    box ht (BT.n.y-OS.s.y)+\${'$'}margin wid In.wid+\${'$'}margin \
-       at Pager fill 0xd0ece8 behind In
-    line invis from 0.25*\${'$'}margin east of last.sw up last.ht \
-       "Backend" italic aligned
-
-    box ht (Tokenizer.n.y-CG.s.y)+\${'$'}margin wid In.wid+\${'$'}margin \
-       at 1/2<Tokenizer.n,CG.s> fill 0xe8d8d0 behind In
-    line invis from 0.25*\${'$'}margin west of last.se up last.ht \
-       "SQL Compiler" italic aligned
-
-    box ht (UT.n.y-TC.s.y)+\${'$'}margin wid In.wid+\${'$'}margin \
-       at 1/2<UT,TC> fill 0xe0ecc8 behind In
-    line invis from 0.25*\${'$'}margin west of last.se up last.ht \
-      "Accessories" italic aligned            
+    assert (1 == 1)
+    print "debugging"
         """.trimIndent()
     }
 
