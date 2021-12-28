@@ -3,6 +3,9 @@
 # IntelliPikchr Changelog
 
 ## [Unreleased]
+### Added
+
+### Changed
 
 ## [0.3.0]
 ### Added
