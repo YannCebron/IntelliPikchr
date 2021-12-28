@@ -1,0 +1,63 @@
+<!--
+  ~ Copyright 2021 The Authors
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<templateSet group="Pikchr">
+    <template name="block" value="$BLOCK_NAME$: {&#10;  $END$&#10;}&#10;" description="Define block" toReformat="true" toShortenFQNames="true">
+        <variable name="BLOCK_NAME" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="Pikchr" value="true" />
+        </context>
+    </template>
+    <template name="define" value="define $MACRO_NAME$ {&#10;  $END$&#10;}&#10;" description="Define macro" toReformat="true" toShortenFQNames="true">
+        <variable name="MACRO_NAME" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="Pikchr" value="true" />
+        </context>
+    </template>
+    <template name="print" value="print &quot;$END$&quot;" description="Print statement" toReformat="true" toShortenFQNames="true">
+        <context>
+            <option name="Pikchr" value="true" />
+        </context>
+    </template>
+    <template name="assert" value="assert ( $LEFT_EXPR$ == $RIGHT_EXPR$ )" description="Assert statement" toReformat="true" toShortenFQNames="true">
+        <variable name="LEFT_EXPR" expression="" defaultValue="" alwaysStopAt="true" />
+        <variable name="RIGHT_EXPR" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="Pikchr" value="true" />
+        </context>
+    </template>
+    <template name="min" value="min($FIRST_EXPR$,$SECOND_EXPR$)" description="min(expr1,expr2)" toReformat="true" toShortenFQNames="true">
+        <variable name="FIRST_EXPR" expression="" defaultValue="" alwaysStopAt="true" />
+        <variable name="SECOND_EXPR" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="Pikchr" value="true" />
+        </context>
+    </template>
+    <template name="max" value="max($FIRST_EXPR$,$SECOND_EXPR$)" description="max(expr1,expr2)" toReformat="true" toShortenFQNames="true">
+        <variable name="FIRST_EXPR" expression="" defaultValue="" alwaysStopAt="true" />
+        <variable name="SECOND_EXPR" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="Pikchr" value="true" />
+        </context>
+    </template>
+    <template name="dist" value="dist($FIRST_POSITION$,$SECOND_POSITION$)" description="dist(pos1,pos2)" toReformat="true" toShortenFQNames="true">
+        <variable name="FIRST_POSITION" expression="" defaultValue="" alwaysStopAt="true" />
+        <variable name="SECOND_POSITION" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="Pikchr" value="true" />
+        </context>
+    </template>
+</templateSet>

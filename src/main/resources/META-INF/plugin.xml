@@ -74,6 +74,8 @@
 
         <liveTemplateContext
                 implementation="com.yanncebron.intellipikchr.lang.PikchrTemplateContextType"/>
+        <defaultLiveTemplates
+                file="/liveTemplates/Pikchr"/>
 
         <projectConfigurable
                 id="intellipikchr"
