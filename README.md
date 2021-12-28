@@ -12,7 +12,9 @@ _Pikchr (pronounced "picture") is a PIC-like markup language for diagrams in tec
 ![IntelliPikchr](docs/intellipikchr.png)
 
 ## Features
-
+ 
+- Syntax highlighting, customize in _Settings/Preferences \| Editor \| Color Scheme \| Pikchr_
+- Bundled Live Templates, customize/add in _Settings/Preferences \| Editor \| Live Templates_
 - Split editor with preview pane for `.pikchr` files, using [kroki.io](https://kroki.io) or self-hosted server for rendering
 - Adapt preview colors to IDE dark UI mode
 - Tune preview with custom CSS
