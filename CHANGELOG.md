@@ -3,6 +3,8 @@
 # IntelliPikchr Changelog
 
 ## [Unreleased]
+
+## [0.3.0]
 ### Added
 - Syntax highlighting, customize in _Settings/Preferences \| Editor \| Color Scheme \| Pikchr_
 - Highlight matching braces
