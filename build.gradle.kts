@@ -2,6 +2,7 @@ import org.jetbrains.grammarkit.tasks.GenerateLexerTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 fun properties(key: String) = project.findProperty(key).toString()
+val isCI = System.getenv("CI") != null
 
 plugins {
     // Java support
@@ -121,5 +122,10 @@ tasks {
         // Specify pre-release label to publish the plugin in a custom Release Channel automatically. Read more:
         // https://plugins.jetbrains.com/docs/intellij/deployment.html#specifying-a-release-channel
         channels.set(listOf(properties("pluginVersion").split('-').getOrElse(1) { "default" }.split('.').first()))
+    }
+
+    // this fails on M1 machines and is needed for "final" distribution only really anyway
+    buildSearchableOptions {
+        enabled = isCI
     }
 }
