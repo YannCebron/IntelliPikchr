@@ -4,6 +4,7 @@
 
 ## [Unreleased]
 
+## [0.3.1]
 ### Changed
 - Mark plugin compatible with 2022.2
 
