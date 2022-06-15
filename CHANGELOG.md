@@ -3,9 +3,9 @@
 # IntelliPikchr Changelog
 
 ## [Unreleased]
-### Added
 
 ### Changed
+- Mark plugin compatible with 2022.2
 
 ## [0.3.0]
 ### Added
