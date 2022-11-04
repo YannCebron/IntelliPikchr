@@ -2,39 +2,45 @@
 
 # IntelliPikchr Changelog
 
-## [Unreleased]
+## Unreleased
+
+## 0.3.2 - 2022-11-04
 
 ### Changed
 - Mark plugin compatible with 2022.3
 
-## [0.3.1]
+## 0.3.1
+
 ### Changed
 - Mark plugin compatible with 2022.2
 
-## [0.3.0]
+## 0.3.0
+
 ### Added
 - Syntax highlighting, customize in _Settings/Preferences \| Editor \| Color Scheme \| Pikchr_
 - Highlight matching braces
 - Bundled Live Templates, customize/add in _Settings/Preferences \| Editor \| Live Templates_
 - Bundled dictionary with Pikchr specific terms
 
-## [0.2.2]
+## 0.2.2
+
 ### Added
 - Automated exception reporting to GitHub
 
 ### Changed
 - Preview editor: force toolbar on left side to disable non-supported _floating toolbar_ mode
 
-## [0.2.1]
+## 0.2.1
+
 ### Added
 - Open Settings from preview editor toolbar
-       
 
 ### Changed
 - Plugin marked compatible with 2021.3 EAP
 - Settings made searchable
 
-## [0.2.0]
+## 0.2.0
+
 ### Added
 - Split editor with preview pane for `.pikchr` files, using [kroki.io](https://kroki.io) or self-hosted server for rendering
 - Adapt preview colors to IDE dark UI mode
