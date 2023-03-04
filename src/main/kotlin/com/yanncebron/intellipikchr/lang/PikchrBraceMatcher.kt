@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 The Authors
+ * Copyright 2023 The Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,16 +24,13 @@ import com.yanncebron.intellipikchr.lang.psi.PikchrTokenTypes
 
 class PikchrBraceMatcher : PairedBraceMatcher {
 
-    companion object {
+    private val PAIRS = arrayOf(
+        BracePair(PikchrTokenTypes.ROUND_L, PikchrTokenTypes.ROUND_R, false),
+        BracePair(PikchrTokenTypes.LT, PikchrTokenTypes.GT, false),
 
-        private val PAIRS = arrayOf(
-                BracePair(PikchrTokenTypes.ROUND_L, PikchrTokenTypes.ROUND_R, false),
-                BracePair(PikchrTokenTypes.LT, PikchrTokenTypes.GT, false),
-
-                BracePair(PikchrTokenTypes.BRACES_L, PikchrTokenTypes.BRACES_R, true),
-                BracePair(PikchrTokenTypes.BRACKET_L, PikchrTokenTypes.BRACKET_R, true)
-        )
-    }
+        BracePair(PikchrTokenTypes.BRACES_L, PikchrTokenTypes.BRACES_R, true),
+        BracePair(PikchrTokenTypes.BRACKET_L, PikchrTokenTypes.BRACKET_R, true)
+    )
 
     override fun getPairs(): Array<BracePair> {
         return PAIRS
