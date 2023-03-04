@@ -87,12 +87,6 @@ jobs:
           name: tests-result
           path: ${{ github.workspace }}/build/reports/tests
 
-      # Upload Kover report to CodeCov
-      - name: Upload Code Coverage Report
-        uses: codecov/codecov-action@v3
-        with:
-          files: ${{ github.workspace }}/build/reports/kover/xml/report.xml
-
       # Cache Plugin Verifier IDEs
       - name: Setup Plugin Verifier IDEs Cache
         uses: actions/cache@v3
