@@ -4,6 +4,10 @@
 
 ## Unreleased
 
+### Changed
+- raise minimum IDE version to 2021.3 (from 2020.3)
+- regenerate Lexer with JFlex 1.9.1
+
 ## 0.3.2 - 2022-11-04
 
 ### Changed
