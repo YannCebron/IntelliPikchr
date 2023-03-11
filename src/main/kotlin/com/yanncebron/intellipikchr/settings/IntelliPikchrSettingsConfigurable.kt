@@ -19,8 +19,9 @@ package com.yanncebron.intellipikchr.settings
 import com.intellij.openapi.options.BoundConfigurable
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.DialogPanel
-import com.intellij.ui.layout.panel
-import com.intellij.ui.layout.toNullableBinding
+import com.intellij.openapi.util.text.StringUtil
+import com.intellij.ui.dsl.builder.*
+import com.intellij.ui.dsl.gridLayout.HorizontalAlign
 import com.yanncebron.intellipikchr.IntelliPikchrBundle
 
 private const val DEFAULT_KROKI_URL = "https://kroki.io"
@@ -33,19 +34,21 @@ class IntelliPikchrSettingsConfigurable(private val project: Project) :
 
     override fun createPanel(): DialogPanel {
         return panel {
-            titledRow(IntelliPikchrBundle.message("settings.preview.group.name")) {
+            group(IntelliPikchrBundle.message("settings.preview.group.name")) {
                 row(IntelliPikchrBundle.message("settings.preview.update.delay")) {
-                    spinner(settings::updatePreviewDelay, 50, 2000, 50)
+                    spinner(50..2000, 50)
+                        .bindIntValue(settings::updatePreviewDelay)
                         .comment("Preview is updated automatically after given delay")
                 }
                 row(IntelliPikchrBundle.message("settings.preview.kroki.server.url")) {
-                    cell {
-                        val textField = textField(settings::krokiServerUrl.toNullableBinding(DEFAULT_KROKI_URL), 30)
-                            .comment(IntelliPikchrBundle.message("settings.preview.kroki.server.url.comment"))
-                        button(IntelliPikchrBundle.message("settings.preview.kroki.server.default")) {
-                            textField.component.text = DEFAULT_KROKI_URL
-                        }
-
+                    val textField = textField()
+                        .bindText(
+                            { settings::krokiServerUrl.get().orEmpty() },
+                            { s -> settings.krokiServerUrl = StringUtil.defaultIfEmpty(s, DEFAULT_KROKI_URL) })
+                        .columns(COLUMNS_MEDIUM)
+                        .comment(IntelliPikchrBundle.message("settings.preview.kroki.server.url.comment"))
+                    button(IntelliPikchrBundle.message("settings.preview.kroki.server.default")) {
+                        textField.component.text = DEFAULT_KROKI_URL
                     }
                 }
                 row {
@@ -56,16 +59,19 @@ class IntelliPikchrSettingsConfigurable(private val project: Project) :
                 }
             }
 
-            titledRow(IntelliPikchrBundle.message("settings.appearance.group.name")) {
+            group(IntelliPikchrBundle.message("settings.appearance.group.name")) {
                 row {
                     checkBox(
                         IntelliPikchrBundle.message("settings.preview.adapt.dark.color"),
-                        settings::previewAdaptDarkColorScheme,
-                        IntelliPikchrBundle.message("settings.preview.adapt.dark.color.comment")
-                    )
+                    ).bindSelected(settings::previewAdaptDarkColorScheme)
+                        .comment(IntelliPikchrBundle.message("settings.preview.adapt.dark.color.comment"))
                 }
                 row(IntelliPikchrBundle.message("settings.preview.custom.css")) {
-                    textField(settings::previewCustomCss.toNullableBinding(""))
+                    textField()
+                        .bindText(
+                            { settings::previewCustomCss.get().orEmpty() },
+                            { s -> settings.previewCustomCss = s })
+                        .horizontalAlign(HorizontalAlign.FILL)
                         .comment(IntelliPikchrBundle.message("settings.preview.custom.css.comment"))
                 }
             }
