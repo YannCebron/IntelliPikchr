@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 The Authors
+ * Copyright 2023 The Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,6 +45,7 @@ import java.net.HttpURLConnection
 import javax.swing.JComponent
 import javax.swing.JPanel
 
+private const val TYPING_UPDATE_DELAY = 100
 
 class PikchrPreviewFileEditor(project: Project, private val virtualFile: VirtualFile) : UserDataHolderBase(),
     FileEditor {
@@ -219,7 +220,4 @@ class PikchrPreviewFileEditor(project: Project, private val virtualFile: Virtual
 
     override fun getCurrentLocation(): FileEditorLocation? = null
 
-    companion object {
-        const val TYPING_UPDATE_DELAY = 100
-    }
 }
