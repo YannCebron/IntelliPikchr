@@ -57,7 +57,7 @@ changelog {
 }
 
 grammarKit {
-    jflexRelease.set("1.7.0-2")
+    jflexRelease.set("1.9.1")
 }
 
 tasks {

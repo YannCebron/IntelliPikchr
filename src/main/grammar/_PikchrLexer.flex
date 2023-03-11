@@ -19,7 +19,6 @@ import static com.yanncebron.intellipikchr.lang.psi.PikchrTokenTypes.*;
 %implements FlexLexer
 %function advance
 %type IElementType
-%unicode
 
 WHITE_SPACE=[\ \t\f]
 CRLF=[\r\n]
