@@ -54,7 +54,7 @@ class PikchrPreviewFileEditor(project: Project, private val virtualFile: Virtual
 
     private val document: Document? = FileDocumentManager.getInstance().getDocument(virtualFile)
 
-    private val panel: JPanel;
+    private val panel: JPanel
     private var jcefPanel: JCEFHtmlPanel? = null
 
     private val docAlarm = Alarm(Alarm.ThreadToUse.POOLED_THREAD, this)

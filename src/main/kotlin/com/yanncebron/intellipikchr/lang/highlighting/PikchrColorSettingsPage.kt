@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 The Authors
+ * Copyright 2023 The Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ import com.yanncebron.intellipikchr.IntelliPikchrBundle
 import com.yanncebron.intellipikchr.PikchrFileType
 import javax.swing.Icon
 
-class PikchrColorSettingsPage : ColorSettingsPage {
+internal class PikchrColorSettingsPage : ColorSettingsPage {
 
     override fun getAttributeDescriptors(): Array<AttributesDescriptor> {
         fun createDescriptor(groupKey: String, typeKey: String, textAttributesKey: TextAttributesKey): AttributesDescriptor {

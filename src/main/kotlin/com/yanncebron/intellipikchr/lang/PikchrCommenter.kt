@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 The Authors
+ * Copyright 2023 The Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@ package com.yanncebron.intellipikchr.lang
 
 import com.intellij.lang.Commenter
 
-class PikchrCommenter : Commenter {
+internal class PikchrCommenter : Commenter {
 
     override fun getLineCommentPrefix(): String = "#"
 

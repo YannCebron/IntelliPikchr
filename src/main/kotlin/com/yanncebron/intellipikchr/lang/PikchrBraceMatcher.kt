@@ -22,9 +22,9 @@ import com.intellij.psi.PsiFile
 import com.intellij.psi.tree.IElementType
 import com.yanncebron.intellipikchr.lang.psi.PikchrTokenTypes
 
-class PikchrBraceMatcher : PairedBraceMatcher {
+internal class PikchrBraceMatcher : PairedBraceMatcher {
 
-    private val PAIRS = arrayOf(
+    private val bracePairs = arrayOf(
         BracePair(PikchrTokenTypes.ROUND_L, PikchrTokenTypes.ROUND_R, false),
         BracePair(PikchrTokenTypes.LT, PikchrTokenTypes.GT, false),
 
@@ -33,7 +33,7 @@ class PikchrBraceMatcher : PairedBraceMatcher {
     )
 
     override fun getPairs(): Array<BracePair> {
-        return PAIRS
+        return bracePairs
     }
 
     override fun isPairedBracesAllowedBeforeType(lbraceType: IElementType, contextType: IElementType?): Boolean {

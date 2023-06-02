@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 The Authors
+ * Copyright 2023 The Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,7 +35,7 @@ import java.awt.*;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
-public class IntelliPikchrErrorReportSubmitter extends ErrorReportSubmitter {
+final class IntelliPikchrErrorReportSubmitter extends ErrorReportSubmitter {
 
     @NonNls
     private static final String REPORT_URL = "https://github.com/YannCebron/IntelliPikchr/issues/new?labels=crash-report&title=";

@@ -26,7 +26,7 @@ import com.yanncebron.intellipikchr.IntelliPikchrBundle
 
 private const val DEFAULT_KROKI_URL = "https://kroki.io"
 
-class IntelliPikchrSettingsConfigurable(private val project: Project) :
+internal class IntelliPikchrSettingsConfigurable(private val project: Project) :
     BoundConfigurable(IntelliPikchrBundle.message("settings.display.name")) {
 
     private val settings

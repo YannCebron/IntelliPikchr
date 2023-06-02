@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 The Authors
+ * Copyright 2023 The Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@ package com.yanncebron.intellipikchr.lang.spellchecker
 
 import com.intellij.spellchecker.BundledDictionaryProvider
 
-class PikchrBundledDictionaryProvider : BundledDictionaryProvider {
+internal class PikchrBundledDictionaryProvider : BundledDictionaryProvider {
 
     override fun getBundledDictionaries(): Array<String> {
         return arrayOf("/dictionaries/pikchr.dic")

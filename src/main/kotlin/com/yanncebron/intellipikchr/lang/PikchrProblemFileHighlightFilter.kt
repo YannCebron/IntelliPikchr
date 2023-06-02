@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 The Authors
+ * Copyright 2023 The Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ import com.intellij.openapi.util.Condition
 import com.intellij.openapi.vfs.VirtualFile
 import com.yanncebron.intellipikchr.PikchrFileType
 
-class PikchrProblemFileHighlightFilter: Condition<VirtualFile> {
+internal class PikchrProblemFileHighlightFilter: Condition<VirtualFile> {
 
     override fun value(virtualFile: VirtualFile): Boolean {
         return virtualFile.fileType == PikchrFileType.INSTANCE
