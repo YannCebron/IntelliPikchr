@@ -5,9 +5,9 @@
 ## Unreleased
 
 ### Changed
-- raise minimum IDE version to 2021.3 (from 2020.3)
-- mark plugin compatible with 2023.2
-- regenerate Lexer with JFlex 1.9.1
+- Raise minimum IDE version to 2021.3 (from 2020.3)
+- Mark plugin compatible with 2023.2
+- Regenerate Lexer with JFlex 1.9.1
 
 ## 0.3.2 - 2022-11-04
 
