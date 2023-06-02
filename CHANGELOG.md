@@ -3,6 +3,8 @@
 # IntelliPikchr Changelog
 
 ## Unreleased
+                 
+### Changed
 
 ## 0.3.4 - 2023-06-02
 
