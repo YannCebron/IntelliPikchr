@@ -4,6 +4,8 @@
 
 ## Unreleased
 
+## 0.3.3 - 2023-06-02
+
 ### Changed
 - Raise minimum IDE version to 2021.3 (from 2020.3)
 - Mark plugin compatible with 2023.2
