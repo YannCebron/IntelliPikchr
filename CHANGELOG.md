@@ -5,6 +5,7 @@
 ## Unreleased
                  
 ### Changed
+- Mark plugin compatible with 2023.3
 
 ## 0.3.4 - 2023-06-02
 
