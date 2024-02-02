@@ -1,0 +1,406 @@
+/*
+ * Copyright 2023 The Authors
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+{
+
+  tokens = [
+     EOL             = 'regexp:\R'
+     WHITE_SPACE     = 'regexp:\p{Blank}+'
+
+   // direction
+   RIGHT = 'right'
+   DOWN = 'down'
+   LEFT = 'left'
+   UP = 'up'
+
+   // object-class
+   ARC = 'arc'
+   ARROW = 'arrow'
+   BOX = 'box'
+   CIRCLE = 'circle'
+   CYLINDER = 'cylinder'
+   DOT = 'dot'
+   ELLIPSE = 'ellipse'
+   FILE = 'file'
+   LINE = 'line'
+   MOVE = 'move'
+   OVAL = 'oval'
+   SPLINE = 'spline'
+   TEXT = 'text'
+
+   DEFINE='define'
+
+   // attribute
+
+   SAME = 'same'
+   AS = 'as'
+  DASHED = 'dashed'
+  DOTTED = 'dotted'
+   COLOR = 'color'
+   FILL = 'fill'
+   CW = 'cw'
+   CCW  = ' ccw'
+
+   ARROW_HEAD_BEGIN = '<-'
+  ARROW_HEAD_END = "->"
+   ARROW_HEAD_BOTH = "<->"
+   INVIS = 'invis'
+   INVISIBLE = 'invisible'
+   THICK ='thick'
+   THIN = 'thin'
+   SOLID = 'solid'
+   CHOP = 'chop'
+   FIT = 'fit'
+
+  // text attribute
+  ABOVE = 'above'
+  ALIGNED = 'aligned'
+  BELOW = 'below'
+  BIG  = 'big'
+  BOLD = 'bold'
+  CENTER = 'center'
+  ITALIC = 'italic'
+  LJUST = "ljust"
+  RJUST = "rjust"
+  SMALL = 'small'
+
+  // numeric property
+  DIAMETER = 'diameter'
+ HT = 'ht'
+ HEIGHT= 'height'
+ RAD= 'rad'
+ RADIUS= 'radius'
+ THICKNESS= 'thickness'
+ WIDTH= 'width'
+ WID   ='wid'
+
+  // pos
+
+  AT = 'at'
+  WITH = 'with'
+  BETWEEN = 'between'
+  WAY = 'way'
+  THE='the'
+  AND = 'and'
+  FROM ='from'
+  HEADING ='heading'
+  THEN='then'
+  GO='go'
+  UNTIL='until'
+  EVEN='even'
+  CLOSE='close'
+  VERTEX='vertex'
+
+  N = 'n'
+  NORTH = 'north'
+  NE = 'ne'
+  E = 'e'
+  EAST = 'east'
+  SE='se'
+  S = 's'
+  SOUTH = 'south'
+  WS ='sw'
+  W = 'w'
+  WEST = 'west'
+  NW = 'nw'
+
+  OF = 'of'
+  IN = 'in'
+
+
+  // ordinal
+  LAST ='last'
+  PREVIOUS ='previous'
+
+  // expr function
+  ABS = 'abs'
+  COS = 'cos'
+  DIST = 'dist'
+  INT = 'int'
+  MAX =  'max'
+  MIN = 'min'
+  SIN = 'sin'
+  SQRT = 'sqrt'
+
+        STRING       = "regexp:(`([^`\\]|\\.)*`|'([^'\\]|\\.)*'|\"([^\"\\]|\\.)*\")"
+
+        DECIMAL = "regexp:[0-9]+"
+        FLOAT = "regexp:[0-9]*[.][0-9]+"
+        hex ='regexp:0x[0-9a-f]+'
+
+        COLON           = ':'
+        SEMICOLON       = ';'
+//        SQUARE_L        = '['
+//        SQUARE_R        = ']'
+        ROUND_L         = '('
+        ROUND_R         = ')'
+        SEPARATOR       = ','
+        DOT             = '.'
+//        HASH            = '#'
+//        DOLLAR          = '$'
+        PERCENT         = '%'
+
+         LT = '<'
+         GT = '>'
+
+        MINUS = '-'
+        PLUS = '+'
+        MUL = '*'
+        DIV = '/'
+
+        EQUAL = '='
+        PLUS_EQUAL = '+='
+        MINUS_EQUAL = '-='
+        MUL_EQUAL = '*='
+        DIV_EQUAL = '/='
+
+        LABEL = 'regexp:[A-Z][a-zA-z_0-9]*'
+        VARIABLE = 'regexp:[a-z$@][a-zA-Z_0-9]+'
+
+        COMMENT  = 'regexp:([#]|/\*|//).*' // todo
+
+  ]
+}
+
+PikchrFile ::= statement_list*
+
+private statement_list ::= statement (SEMICOLON statement?)* //EOL*
+{
+  name = "statement"
+}
+
+private statement ::=
+                      object_definition |
+                      label object_definition |
+                      label place |
+                      direction |
+                      variable |
+                      define // todo missing
+
+{
+   name = "statement"
+ pin = 1
+//  recoverWhile = statement_recover
+}
+private statement_recover ::= !(SEMICOLON) { consumeTokenMethod = "consumeTokenFast" }
+
+direction ::= RIGHT | DOWN | LEFT | UP
+
+private assignment_op ::= EQUAL | PLUS_EQUAL | MINUS_EQUAL | MUL_EQUAL|DIV_EQUAL
+variable ::= VARIABLE assignment_op expr
+
+label ::= LABEL COLON {
+name="label"
+}
+
+define::= DEFINE VARIABLE code_block
+code_block ::='{' statement_list*  '}'
+
+private object_class ::= (ARC | ARROW | BOX | CIRCLE | CYLINDER | DOT | ELLIPSE | FILE | LINE | MOVE | OVAL | SPLINE | TEXT)
+{
+name='object class'
+}
+object_definition ::= (object_class | string_with_attribute) attribute*
+string_with_attribute ::= STRING text_attribute*
+
+private attribute ::=
+              path_attribute |
+              location_attribute |
+
+              same_as_attribute|
+              same_attribute |
+
+              dashed_attribute |
+              dotted_attribute |
+              color_attribute |
+              fill_attribute |
+              cw_attribute |
+              ccw_attribute |
+
+              arrow_head_begin_attribute |
+              arrow_head_end_attribute |
+              arrow_head_both_attribute|
+
+              invis_attribute|
+              invisible_attribute |
+              thick_attribute |
+              thin_attribute |
+              solid_attribute |
+              chop_attribute |
+              fit_attribute |
+
+
+              string_with_attribute |
+              numeric_property
+
+same_attribute::=SAME
+same_as_attribute::=SAME AS object
+
+path_attribute ::= from_path_attribute
+                   (then_to_position_path_attribute |
+                    then_go_direction_line_length |
+                     then_go_direction_until_even_with |
+                     then_go_line_length_heading_compass_angle|
+                     then_go_line_length_compass_direction
+                    )*
+                    close
+from_path_attribute ::= FROM position
+then_to_position_path_attribute ::= THEN? TO position
+then_go_direction_line_length ::=THEN? GO? direction line_length?
+then_go_direction_until_even_with ::= THEN? GO? direction UNTIL? EVEN WITH position
+then_go_line_length_heading_compass_angle ::= THEN? GO? line_length? HEADING compass_angle
+then_go_line_length_compass_direction ::=THEN? GO? line_length? compass_direction
+
+close::=CLOSE
+
+compass_direction::=N|NORTH|NE|E|EAST|SE|S|SOUTH|SW|W|WEST|NW
+
+private line_length::= expr | expr PERCENT
+
+
+place ::= object | object DOT edgename | edgename OF object | ordinal VERTEX OF object
+object ::= LABEL | //|  object DOT LABEL //todo problem
+           nth_object (OF|IN)? object? // todo added `?` to keyword and object -- ?!
+
+ordinal::= "first"| // todo clash with variable
+           "1st"|"2nd"|"3rd"|"regexp:[0-9]th"
+nth_object::= ordinal object_class|
+              ordinal LAST object_class | ordinal PREVIOUS object_class|
+              LAST object_class|PREVIOUS object_class|
+              LAST|PREVIOUS // todo missing
+edgename::=N|NORTH|NE|E|EAST|SE|S|SOUTH|SW|W|WEST|NW|"t"|TOP|"bot"|"bottom"|LEFT|RIGHT|"c"|"center"|"start"|"end"
+
+location_attribute ::= AT position |
+            WITH edgename AT position |
+            WITH DOT edgename AT position
+
+private fraction ::=expr {
+name="fraction"
+}
+private distance ::=expr {
+name="distance"
+}
+position ::=
+             expr COMMA expr |
+             place  |
+             place PLUS expr COMMA expr |
+             place MINUS expr COMMA expr |
+             place PLUS ROUND_L expr COMMA expr ROUND_R|
+             place MINUS ROUND_L expr COMMA expr ROUND_R|
+             ROUND_L position COMMA position ROUND_R |
+             ROUND_L position ROUND_R  |
+             fraction OF THE WAY BETWEEN position AND position |
+             fraction WAY BETWEEN position AND position |
+             fraction BETWEEN position AND position |
+             fraction LT position COMMA position GT |
+             distance which_way_from position
+
+
+private compass_angle::=expr
+which_way_from ::=ABOVE |BELOW | RIGHT OF |LEFT OF|
+                 N OF | NORTH OF |NE OF|E OF|EAST OF|
+                 SE OF| S OF| SOUTH OF | SW OF| W OF | WEST OF| NW OF |
+                 HEADING compass_angle FROM
+// ----------------------------
+
+private color_names::="white"|"black"|"red"|"blue"|"gray" // todo
+{
+  name="color name"
+}
+color_expr ::= color_names | hex_expr
+
+dashed_attribute ::= DASHED expr?
+dotted_attribute ::= DOTTED expr?
+color_attribute ::= COLOR color_expr
+fill_attribute ::= FILL color_expr
+
+cw_attribute ::= CW
+ccw_attribute ::=CCW
+
+arrow_head_begin_attribute ::= ARROW_HEAD_BEGIN
+arrow_head_end_attribute ::=   ARROW_HEAD_END
+arrow_head_both_attribute ::=  ARROW_HEAD_BOTH
+
+invis_attribute ::= INVIS
+invisible_attribute ::= INVISIBLE
+
+thick_attribute ::=THICK
+thin_attribute ::= THIN
+solid_attribute ::= SOLID
+chop_attribute ::= CHOP
+fit_attribute ::= FIT
+
+
+text_attribute ::= ABOVE |
+                   ALIGNED|
+                   BELOW|
+                   BIG|
+                   BOLD|
+                   CENTER|
+                   ITALIC|
+                   LJUST|
+                   RJUST|
+                   SMALL
+
+
+numeric_property ::= (DIAMETER|HT|HEIGHT|RAD|RADIUS|THICKNESS|WIDTH|WID) expr PERCENT?
+
+;{
+  extends(".*expr")=expr
+}
+expr ::= add_group |
+         mul_group |
+         unary_group |
+         function_group |
+         literal_group
+
+private add_group::= add_expr | sub_expr
+add_expr ::= expr PLUS expr
+sub_expr ::= expr MINUS expr
+
+private mul_group ::= mul_expr | div_expr
+mul_expr ::= expr MUL expr
+div_expr ::= expr DIV expr
+
+private unary_group ::= unary_minus_expr | unary_plus_expr
+unary_minus_expr ::= MINUS expr
+unary_plus_expr ::= PLUS expr
+
+private literal_group ::= numeric_expr | var_ref_expr| place_expr| object_dot_ref_expr | paren_expr
+
+private numeric_suffix ::= "in" | "cm" | "px"| "pt"| "pc"| "mm"
+numeric_expr ::= decimal_expr | float_expr | hex_expr
+decimal_expr ::=DECIMAL numeric_suffix?
+float_expr ::= FLOAT numeric_suffix?
+hex_expr ::=HEX
+
+var_ref_expr ::=VARIABLE
+place_expr::=place DOT ("x"|"y")
+object_dot_ref_expr ::= object dot_property// todo ?dotproperty
+paren_expr ::= ROUND_L expr ROUND_R
+
+private function_group ::= abs_expr | cos_expr|dist_expr|int_expr|max_expr|min_expr|sin_expr|sqrt_expr
+abs_expr ::= ABS ROUND_L expr ROUND_R
+cos_expr ::= COS ROUND_L expr ROUND_R
+dist_expr ::= DIST ROUND_L position COMMA position ROUND_R 
+int_expr ::= INT ROUND_L expr ROUND_R
+max_expr ::= MAX ROUND_L expr COMMA expr ROUND_R
+min_expr ::= MIN ROUND_L expr COMMA expr ROUND_R
+sin_expr ::= SIN ROUND_L expr ROUND_R
+sqrt_expr ::= SQRT ROUND_L expr ROUND_R
+
+
+dot_property ::=".color"|".dashed"|".diameter"|".dotted"|".fill"|".ht"|".height"|".rad"|".radius"|".thickness"|".wid"|".width"
