@@ -6,7 +6,7 @@
                  
 ### Changed
 - Raise minimum IDE version to 2022.2 (from 2021.3)
-- Mark plugin compatible with 2023.3/2024.1
+- Mark plugin compatible with 2023.3 and 2024.1
 
 ## 0.3.4 - 2023-06-02
 
