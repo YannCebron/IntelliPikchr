@@ -15,7 +15,7 @@ plugins {
     // Gradle Changelog Plugin
     id("org.jetbrains.changelog") version "2.2.0"
     // GrammarKit
-    id("org.jetbrains.grammarkit") version "2021.2.2"
+    id("org.jetbrains.grammarkit") version "2022.3.2.1"
 }
 
 group = properties("pluginGroup")
@@ -55,10 +55,6 @@ changelog {
     groups.set(emptyList())
 }
 
-grammarKit {
-    jflexRelease.set("1.9.1")
-}
-
 tasks {
     // Set the JVM compatibility versions
     properties("javaVersion").let {
@@ -75,8 +71,8 @@ tasks {
         gradleVersion = properties("gradleVersion")
     }
 
-    task<GenerateLexerTask>("generatePikchrLexer") {
-        source.set("src/main/grammar/_PikchrLexer.flex")
+    generateLexer {
+        sourceFile.set(file("src/main/grammar/_PikchrLexer.flex"))
         skeleton.set(file("src/main/grammar/idea-flex.skeleton"))
         targetDir.set("src/gen/com/yanncebron/intellipikchr/lang/lexer/")
         targetClass.set("_PikchrLexer")
