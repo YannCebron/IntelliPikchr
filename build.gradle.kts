@@ -14,7 +14,7 @@ plugins {
     // Gradle Changelog Plugin
     id("org.jetbrains.changelog") version "2.2.0"
     // GrammarKit
-    id("org.jetbrains.grammarkit") version "2022.3.2.1"
+    id("org.jetbrains.grammarkit") version "2022.3.2.2"
 }
 
 group = properties("pluginGroup")
@@ -73,8 +73,7 @@ tasks {
     generateLexer {
         sourceFile.set(file("src/main/grammar/_PikchrLexer.flex"))
         skeleton.set(file("src/main/grammar/idea-flex.skeleton"))
-        targetDir.set("src/gen/com/yanncebron/intellipikchr/lang/lexer/")
-        targetClass.set("_PikchrLexer")
+        targetOutputDir.set(file("src/gen/com/yanncebron/intellipikchr/lang/lexer/"))
         purgeOldFiles.set(true)
     }
 
