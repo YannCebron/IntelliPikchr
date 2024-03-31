@@ -1,5 +1,5 @@
 <!--
-    Copyright 2021 The Authors
+    Copyright 2024 The Authors
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -28,12 +28,12 @@
         <br>
         Features:
         <ul>
-            <li>Syntax highlighting, customize in <em>Settings/Preferences | Editor | Color Scheme | Pikchr</em></li>
-            <li>Bundled Live Templates, customize/add in <em>Settings/Preferences | Editor | Live Templates</em></li>
+            <li>Syntax highlighting, customize in <em>Settings | Editor | Color Scheme | Pikchr</em></li>
+            <li>Bundled Live Templates, customize/add in <em>Settings | Editor | Live Templates</em></li>
             <li>Split editor with preview pane for <code>.pikchr</code> files, using <a href="https://kroki.io/">kroki.io</a> or self-hosted server for rendering</li>
             <li>Adapt preview colors to IDE dark UI mode</li>
             <li>Tune preview with custom CSS</li>
-            <li>See <em>Settings/Preferences | Languages & Frameworks | IntelliPikchr</em> to customize (see Settings icon in editor toolbar)</li>
+            <li>See <em>Settings | Languages & Frameworks | IntelliPikchr</em> to customize (see Settings icon in editor toolbar)</li>
         </ul>
     ]]></description>
 

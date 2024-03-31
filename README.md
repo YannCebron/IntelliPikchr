@@ -13,12 +13,12 @@ _Pikchr (pronounced "picture") is a PIC-like markup language for diagrams in tec
 
 ## Features
  
-- Syntax highlighting, customize in _Settings/Preferences \| Editor \| Color Scheme \| Pikchr_
-- Bundled Live Templates, customize/add in _Settings/Preferences \| Editor \| Live Templates_
+- Syntax highlighting, customizable in _Settings \| Editor \| Color Scheme \| Pikchr_
+- Bundled Live Templates, customize/add in _Settings \| Editor \| Live Templates_
 - Split editor with preview pane for `.pikchr` files, using [kroki.io](https://kroki.io) or self-hosted server for rendering
 - Adapt preview colors to IDE dark UI mode
 - Tune preview with custom CSS
-- See _Settings/Preferences \| Languages & Frameworks \| IntelliPikchr_ to customize (see Settings icon in editor toolbar)
+- See _Settings \| Languages & Frameworks \| IntelliPikchr_ to customize (see Settings icon in editor toolbar)
 
 ### Plans/Ideas
 
@@ -31,13 +31,13 @@ _Pikchr (pronounced "picture") is a PIC-like markup language for diagrams in tec
 
 - Using IDE built-in plugin system:
 
-  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "IntelliPikchr"</kbd> >  <kbd>Install Plugin</kbd>
+  <kbd>Settings</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "IntelliPikchr"</kbd> >  <kbd>Install Plugin</kbd>
 
 - Manually:
 
   Download the [latest release](https://github.com/YannCebron/IntelliPikchr/releases/latest) and install it manually
   using
-  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>⚙️</kbd> > <kbd>Install plugin from disk...</kbd>
+  <kbd>Settings</kbd> > <kbd>Plugins</kbd> > <kbd>⚙️</kbd> > <kbd>Install plugin from disk...</kbd>
                              
 ## License | Code of Conduct | Credits
 
