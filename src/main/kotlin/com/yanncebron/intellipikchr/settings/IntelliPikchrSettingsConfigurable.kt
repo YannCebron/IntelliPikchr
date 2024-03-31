@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 The Authors
+ * Copyright 2024 The Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@ import com.intellij.openapi.ui.DialogPanel
 import com.intellij.openapi.util.text.StringUtil
 import com.intellij.ui.dsl.builder.*
 import com.intellij.ui.dsl.gridLayout.HorizontalAlign
+import com.intellij.ui.layout.enteredTextSatisfies
 import com.yanncebron.intellipikchr.IntelliPikchrBundle
 
 private const val DEFAULT_KROKI_URL = "https://kroki.io"
@@ -49,7 +50,7 @@ internal class IntelliPikchrSettingsConfigurable(private val project: Project) :
                         .comment(IntelliPikchrBundle.message("settings.preview.kroki.server.url.comment"))
                     button(IntelliPikchrBundle.message("settings.preview.kroki.server.default")) {
                         textField.component.text = DEFAULT_KROKI_URL
-                    }
+                    }.enabledIf(textField.component.enteredTextSatisfies { it != DEFAULT_KROKI_URL })
                 }
                 row {
                     browserLink(
