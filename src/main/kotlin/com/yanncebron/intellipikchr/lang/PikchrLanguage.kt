@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 The Authors
+ * Copyright 2024 The Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,9 +22,9 @@ import com.yanncebron.intellipikchr.PikchrFileType
 
 class PikchrLanguage private constructor() : Language("Pikchr") {
 
-    override fun getAssociatedFileType(): LanguageFileType {
-        return PikchrFileType.INSTANCE
-    }
+    override fun getAssociatedFileType(): LanguageFileType = PikchrFileType.INSTANCE
+
+    override fun isCaseSensitive(): Boolean = true
 
     companion object {
         val INSTANCE = PikchrLanguage()
