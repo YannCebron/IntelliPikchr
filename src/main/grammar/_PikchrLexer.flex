@@ -62,6 +62,7 @@ VARIABLE=[$@]?[a-z][a-zA-Z_0-9]*
   "oval"             { return OVAL; }
   "spline"           { return SPLINE; }
   "text"             { return TEXT; }
+  "diamond"          { return DIAMOND; }
 
   "define"           { return DEFINE; }
   "same"             { return SAME; }
