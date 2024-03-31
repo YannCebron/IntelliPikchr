@@ -58,7 +58,8 @@ object PikchrTextAttributes {
     val DOT = createTextAttributesKey("PIKCHR_DOT", DefaultLanguageHighlighterColors.DOT)
 
     @JvmField
-    val OPERATION_SIGN = createTextAttributesKey("PIKCHR_OPERATION_SIGN", DefaultLanguageHighlighterColors.OPERATION_SIGN)
+    val OPERATION_SIGN =
+        createTextAttributesKey("PIKCHR_OPERATION_SIGN", DefaultLanguageHighlighterColors.OPERATION_SIGN)
 
     @JvmField
     val PARENTHESES = createTextAttributesKey("PIKCHR_PARENTHESES", DefaultLanguageHighlighterColors.PARENTHESES)
@@ -80,6 +81,9 @@ object PikchrTextAttributes {
     val VARIABLE = createTextAttributesKey("PIKCHR_VARIABLE", DefaultLanguageHighlighterColors.LOCAL_VARIABLE)
 
     @JvmField
+    val BUILTIN_VARIABLE = createTextAttributesKey("BUILTIN_VARIABLE", DefaultLanguageHighlighterColors.GLOBAL_VARIABLE)
+
+    @JvmField
     val KEYWORD = createTextAttributesKey("PIKCHR_KEYWORD", DefaultLanguageHighlighterColors.KEYWORD)
 
 
@@ -96,7 +100,8 @@ object PikchrTextAttributes {
     val ARROW_HEAD = createTextAttributesKey("PIKCHR_ARROW_HEAD", DefaultLanguageHighlighterColors.STATIC_METHOD)
 
     @JvmField
-    val EDGE_POSITION = createTextAttributesKey("PIKCHR_EDGE_POSITION", DefaultLanguageHighlighterColors.PREDEFINED_SYMBOL)
+    val EDGE_POSITION =
+        createTextAttributesKey("PIKCHR_EDGE_POSITION", DefaultLanguageHighlighterColors.PREDEFINED_SYMBOL)
 
     @JvmField
     val FUNCTION = createTextAttributesKey("PIKCHR_FUNCTION", DefaultLanguageHighlighterColors.FUNCTION_CALL)

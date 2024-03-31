@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 The Authors
+ * Copyright 2024 The Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,78 +19,106 @@ package com.yanncebron.intellipikchr.lang.lexer
 class PikchrVariableLexerTest : PikchrLexerTestCase() {
 
     fun testAssignment() {
-        doTest("var=42", """
+        doTest(
+            "var=42", """
             variable ('var')
             = ('=')
             decimal ('42')
-        """.trimIndent())
+        """.trimIndent()
+        )
     }
 
     fun testAssignmentDollarPrefix() {
-        doTest("${'$'}var=42", """
+        doTest(
+            "${'$'}var=42", """
             variable ('${'$'}var')
             = ('=')
             decimal ('42')
-        """.trimIndent())
+        """.trimIndent()
+        )
     }
 
     fun testAssignmentAtSignPrefix() {
-        doTest("@var=42", """
+        doTest(
+            "@var=42", """
             variable ('@var')
             = ('=')
             decimal ('42')
-        """.trimIndent())
+        """.trimIndent()
+        )
     }
 
     fun testAssignmentSingleLetterName() {
-        doTest("v=42", """
+        doTest(
+            "v=42", """
             variable ('v')
             = ('=')
             decimal ('42')
-        """.trimIndent())
+        """.trimIndent()
+        )
     }
 
     fun testPlusEqualAssignment() {
-        doTest("var+=42", """
+        doTest(
+            "var+=42", """
             variable ('var')
             += ('+=')
             decimal ('42')            
-        """.trimIndent())
+        """.trimIndent()
+        )
     }
 
     fun testMinusEqualAssignment() {
-        doTest("var-=42", """
+        doTest(
+            "var-=42", """
             variable ('var')
             -= ('-=')
             decimal ('42')            
-        """.trimIndent())
+        """.trimIndent()
+        )
     }
 
     fun testMulEqualAssignment() {
-        doTest("var*=42", """
+        doTest(
+            "var*=42", """
             variable ('var')
             *= ('*=')
             decimal ('42')            
-        """.trimIndent())
+        """.trimIndent()
+        )
     }
 
     fun testDivEqualAssignment() {
-        doTest("var/=42", """
+        doTest(
+            "var/=42", """
             variable ('var')
             /= ('/=')
             decimal ('42')            
-        """.trimIndent())
+        """.trimIndent()
+        )
     }
 
     fun testDefine() {
-        doTest("define myMacro {}", """
+        doTest(
+            "define myMacro {}", """
             define ('define')
             WHITE_SPACE (' ')
             variable ('myMacro')
             WHITE_SPACE (' ')
             { ('{')
             } ('}')            
-        """.trimIndent())
+        """.trimIndent()
+        )
+    }
+
+    fun testBuiltinVariable() {
+        doTest(
+            "arcrad=0.5", """
+          arcrad ('arcrad')
+          = ('=')
+          float ('0.5')  
+        """.trimIndent()
+        )
     }
 
 }

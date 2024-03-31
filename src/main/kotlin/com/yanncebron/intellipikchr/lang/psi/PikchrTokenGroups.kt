@@ -145,6 +145,43 @@ object PikchrTokenGroups {
     )
 
     @JvmField
+    val BUILTIN_VARS = TokenSet.create(
+        PikchrTokenTypes.ARCRAD,
+        PikchrTokenTypes.ARROWHEAD,
+        PikchrTokenTypes.ARROWHT,
+        PikchrTokenTypes.ARROWWID,
+        PikchrTokenTypes.BOXHT,
+        PikchrTokenTypes.BOXRAD,
+        PikchrTokenTypes.BOXWID,
+        PikchrTokenTypes.CHARHT,
+        PikchrTokenTypes.CHARWID,
+        PikchrTokenTypes.CIRCLERAD,
+        PikchrTokenTypes.BUILTIN_COLOR,
+        PikchrTokenTypes.CYLHT,
+        PikchrTokenTypes.CYLRAD,
+        PikchrTokenTypes.CYLWID,
+        PikchrTokenTypes.DASHWID,
+        PikchrTokenTypes.DIAMONDHT,
+        PikchrTokenTypes.DIAMONDWID,
+        PikchrTokenTypes.DOTRAD,
+        PikchrTokenTypes.ELLIPSEHT,
+        PikchrTokenTypes.ELLIPSEWID,
+        PikchrTokenTypes.FILEHT,
+        PikchrTokenTypes.FILERAD,
+        PikchrTokenTypes.FILEWID,
+        PikchrTokenTypes.BUILTIN_FILL,
+        PikchrTokenTypes.LINEHT,
+        PikchrTokenTypes.LINEWID,
+        PikchrTokenTypes.MOVEWID,
+        PikchrTokenTypes.OVALHT,
+        PikchrTokenTypes.OVALWID,
+        PikchrTokenTypes.SCALE,
+        PikchrTokenTypes.TEXTHT,
+        PikchrTokenTypes.TEXTWID,
+        PikchrTokenTypes.BUILTIN_THICKNESS
+    )
+
+    @JvmField
     val ATTRIBUTE = TokenSet.create(
         // attribute
         PikchrTokenTypes.SAME,

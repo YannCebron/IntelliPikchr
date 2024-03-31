@@ -206,6 +206,39 @@ VARIABLE=[$@]?[a-z][a-zA-Z_0-9]*
   {FLOAT}            { return FLOAT; }
   {HEX}              { return HEX; }
 
+  "arcrad"           { return ARCRAD; }
+  "arrowhead"        { return ARROWHEAD; }
+  "arrowht"          { return ARROWHT; }
+  "arrowwid"         { return ARROWWID; }
+  "boxht"            { return BOXHT; }
+  "boxrad"           { return BOXRAD; }
+  "boxwid"           { return BOXWID; }
+  "charht"           { return CHARHT; }
+  "charwid"          { return CHARWID; }
+  "circlerad"        { return CIRCLERAD; }
+//  "color"            { return BUILTIN_COLOR; } TODO clashes with COLOR
+  "cylht"            { return CYLHT; }
+  "cylrad"           { return CYLRAD; }
+  "cylwid"           { return CYLWID; }
+  "dashwid"          { return DASHWID; }
+  "diamondht"        { return DIAMONDHT; }
+  "diamondwid"       { return DIAMONDWID; }
+  "dotrad"           { return DOTRAD; }
+  "ellipseht"        { return ELLIPSEHT; }
+  "ellipsewid"       { return ELLIPSEWID; }
+  "fileht"           { return FILEHT; }
+  "filerad"          { return FILERAD; }
+  "filewid"          { return FILEWID; }
+//  "fill"            { return BUILTIN_FILL; } TODO clashes with FILL
+  "lineht"           { return LINEHT; }
+  "linewid"          { return LINEWID; }
+  "movewid"          { return MOVEWID; }
+  "ovalht"           { return OVALHT; }
+  "ovalwid"          { return OVALWID; }
+  "scale"            { return SCALE; }
+  "textht"           { return TEXTHT; }
+  "textwid"          { return TEXTWID; }
+//  "thickness"            { return BUILTIN_THICKNESS; } TODO clashes with THICKNESS
 
   {VARIABLE}         { return VARIABLE; }
 

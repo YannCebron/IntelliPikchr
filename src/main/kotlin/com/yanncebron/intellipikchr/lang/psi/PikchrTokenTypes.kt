@@ -492,5 +492,105 @@ object PikchrTokenTypes {
     @JvmField
     val SQRT: IElementType = PikchrTokenType("sqrt")
 
+    // builtin variables
+    @JvmField
+    val ARCRAD: IElementType = PikchrTokenType("arcrad")
+
+    @JvmField
+    val ARROWHEAD: IElementType = PikchrTokenType("arrowhead")
+
+    @JvmField
+    val ARROWHT: IElementType = PikchrTokenType("arrowht")
+
+    @JvmField
+    val ARROWWID: IElementType = PikchrTokenType("arrowwid")
+
+    @JvmField
+    val BOXHT: IElementType = PikchrTokenType("boxht")
+
+    @JvmField
+    val BOXRAD: IElementType = PikchrTokenType("boxrad")
+
+    @JvmField
+    val BOXWID: IElementType = PikchrTokenType("boxwid")
+
+    @JvmField
+    val CHARHT: IElementType = PikchrTokenType("charht")
+
+    @JvmField
+    val CHARWID: IElementType = PikchrTokenType("charwid")
+
+    @JvmField
+    val CIRCLERAD: IElementType = PikchrTokenType("circlerad")
+
+    @JvmField
+    val BUILTIN_COLOR: IElementType = PikchrTokenType("builtin_color")
+
+    @JvmField
+    val CYLHT: IElementType = PikchrTokenType("cylht")
+
+    @JvmField
+    val CYLRAD: IElementType = PikchrTokenType("cylrad")
+
+    @JvmField
+    val CYLWID: IElementType = PikchrTokenType("cylwid")
+
+    @JvmField
+    val DASHWID: IElementType = PikchrTokenType("dashwid")
+
+    @JvmField
+    val DIAMONDHT: IElementType = PikchrTokenType("diamondht")
+
+    @JvmField
+    val DIAMONDWID: IElementType = PikchrTokenType("diamondwid")
+
+    @JvmField
+    val DOTRAD: IElementType = PikchrTokenType("dotrad")
+
+    @JvmField
+    val ELLIPSEHT: IElementType = PikchrTokenType("ellipseht")
+
+    @JvmField
+    val ELLIPSEWID: IElementType = PikchrTokenType("ellipsewid")
+
+    @JvmField
+    val FILEHT: IElementType = PikchrTokenType("fileht")
+
+    @JvmField
+    val FILERAD: IElementType = PikchrTokenType("filerad")
+
+    @JvmField
+    val FILEWID: IElementType = PikchrTokenType("filewid")
+
+    @JvmField
+    val BUILTIN_FILL: IElementType = PikchrTokenType("builtin_fill")
+
+    @JvmField
+    val LINEHT: IElementType = PikchrTokenType("lineht")
+
+    @JvmField
+    val LINEWID: IElementType = PikchrTokenType("linewid")
+
+    @JvmField
+    val MOVEWID: IElementType = PikchrTokenType("movewid")
+
+    @JvmField
+    val OVALHT: IElementType = PikchrTokenType("ovalht")
+
+    @JvmField
+    val OVALWID: IElementType = PikchrTokenType("ovalwid")
+
+    @JvmField
+    val SCALE: IElementType = PikchrTokenType("scale")
+
+    @JvmField
+    val TEXTHT: IElementType = PikchrTokenType("textht")
+
+    @JvmField
+    val TEXTWID: IElementType = PikchrTokenType("textwid")
+
+    @JvmField
+    val BUILTIN_THICKNESS: IElementType = PikchrTokenType("builtin_thickness")
+
     private class PikchrTokenType(debugName: @NonNls String) : IElementType(debugName, PikchrLanguage.INSTANCE)
 }

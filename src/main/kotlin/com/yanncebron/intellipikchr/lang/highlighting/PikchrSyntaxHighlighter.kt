@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 The Authors
+ * Copyright 2024 The Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -64,6 +64,7 @@ class PikchrSyntaxHighlighter : SyntaxHighlighterBase() {
             in PikchrTokenGroups.ARROW_HEAD -> pack(PikchrTextAttributes.ARROW_HEAD)
             in PikchrTokenGroups.EDGE_POSITION -> pack(PikchrTextAttributes.EDGE_POSITION)
             in PikchrTokenGroups.FUNCTION -> pack(PikchrTextAttributes.FUNCTION)
+            in PikchrTokenGroups.BUILTIN_VARS -> pack(PikchrTextAttributes.BUILTIN_VARIABLE)
 
             in PikchrTokenGroups.DEBUG_STATEMENTS -> pack(PikchrTextAttributes.DEBUG)
             TokenType.BAD_CHARACTER -> pack(HighlighterColors.BAD_CHARACTER)

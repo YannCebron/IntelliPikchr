@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 The Authors
+ * Copyright 2024 The Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,6 +37,7 @@ internal class PikchrColorSettingsPage : ColorSettingsPage {
                 createDescriptor("color.settings.group.root", "attribute.descriptor.backslash", PikchrTextAttributes.BACKSLASH),
                 createDescriptor("color.settings.group.root", "attribute.descriptor.label", PikchrTextAttributes.LABEL),
                 createDescriptor("color.settings.group.root", "attribute.descriptor.variable", PikchrTextAttributes.VARIABLE),
+                createDescriptor("color.settings.group.root", "attribute.descriptor.builtin.variable", PikchrTextAttributes.BUILTIN_VARIABLE),
                 createDescriptor("color.settings.group.root", "attribute.descriptor.keyword", PikchrTextAttributes.KEYWORD),
                 createDescriptor("color.settings.group.root", "attribute.descriptor.object", PikchrTextAttributes.OBJECT),
                 createDescriptor("color.settings.group.root", "attribute.descriptor.direction", PikchrTextAttributes.DIRECTION),
@@ -76,6 +77,7 @@ internal class PikchrColorSettingsPage : ColorSettingsPage {
     @Suppress("SpellCheckingInspection")
     override fun getDemoText(): String {
         return """
+    arcrad = 0.1
     lineht *= 0.4
     ${'$'}margin = lineht*2.5
     scale = 0.75

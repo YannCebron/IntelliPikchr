@@ -7,6 +7,7 @@
 ### Added
 
 - Support `diamond` object ([#89](https://github.com/YannCebron/IntelliPikchr/issues/89))
+- Distinct highlighting for builtin variables (`lineht = 0.5`) 
 
 ## 0.3.5 - 2024-02-02
 

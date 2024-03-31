@@ -33,7 +33,8 @@ class PikchrTokenTypesTest : UsefulTestCase() {
         PikchrTokenGroups.ATTRIBUTE,
         PikchrTokenGroups.EDGE_POSITION,
         PikchrTokenGroups.ARROW_HEAD,
-        PikchrTokenGroups.DEBUG_STATEMENTS
+        PikchrTokenGroups.DEBUG_STATEMENTS,
+        PikchrTokenGroups.BUILTIN_VARS
     )
 
     private val ignoreTypes = TokenSet.create(
