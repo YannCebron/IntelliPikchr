@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 The Authors
+ * Copyright 2024 The Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,15 +23,19 @@ import org.jetbrains.annotations.PropertyKey
 @NonNls
 private const val BUNDLE = "messages.IntelliPikchr"
 
-object IntelliPikchrBundle : DynamicBundle(BUNDLE) {
+class IntelliPikchrBundle {
 
-    @Suppress("SpreadOperator")
-    @JvmStatic
-    fun message(@PropertyKey(resourceBundle = BUNDLE) key: String, vararg params: Any) =
-        getMessage(key, *params)
+    companion object {
+        private val ourBundle = DynamicBundle(IntelliPikchrBundle::class.java, BUNDLE)
 
-    @Suppress("SpreadOperator", "unused")
-    @JvmStatic
-    fun messagePointer(@PropertyKey(resourceBundle = BUNDLE) key: String, vararg params: Any) =
-        getLazyMessage(key, *params)
+        @Suppress("SpreadOperator")
+        @JvmStatic
+        fun message(@PropertyKey(resourceBundle = BUNDLE) key: String, vararg params: Any) =
+            ourBundle.getMessage(key, *params)
+
+        @Suppress("SpreadOperator", "unused")
+        @JvmStatic
+        fun messagePointer(@PropertyKey(resourceBundle = BUNDLE) key: String, vararg params: Any) =
+            ourBundle.getLazyMessage(key, *params)
+    }
 }
