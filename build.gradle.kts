@@ -12,7 +12,7 @@ plugins {
     // Gradle IntelliJ Plugin
     id("org.jetbrains.intellij") version "1.17.3"
     // Gradle Changelog Plugin
-    id("org.jetbrains.changelog") version "2.2.0"
+    id("org.jetbrains.changelog") version "2.2.1"
     // GrammarKit
     id("org.jetbrains.grammarkit") version "2022.3.2.2"
 }
