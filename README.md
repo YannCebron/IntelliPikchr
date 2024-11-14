@@ -5,6 +5,10 @@
 [![Version](https://img.shields.io/jetbrains/plugin/v/17624.svg)](https://plugins.jetbrains.com/plugin/17624)
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/17624.svg)](https://plugins.jetbrains.com/plugin/17624)
 
+
+> [!IMPORTANT]
+> As of November 2024, this plugin is no longer under active development.
+
 Support [Pikchr](https://pikchr.org/) language in IntelliJ-based IDEs (2021.3 and later).
 
 _Pikchr (pronounced "picture") is a PIC-like markup language for diagrams in technical documentation._
